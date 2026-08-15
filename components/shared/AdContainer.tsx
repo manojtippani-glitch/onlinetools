@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 interface AdContainerProps {
   slot?: string;
@@ -8,10 +8,13 @@ interface AdContainerProps {
 }
 
 export default function AdContainer({ slot = '0000000000', format = 'auto' }: AdContainerProps) {
-  useEffect(() => {
-    const hasClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID &&
-                        process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID !== 'ca-pub-0000000000000000';
+  const hasClientId = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+    return clientId && clientId !== 'ca-pub-0000000000000000';
+  }, []);
 
+  useEffect(() => {
     if (hasClientId && typeof window !== 'undefined' && (window as any).adsbygoogle) {
       try {
         ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
@@ -19,10 +22,7 @@ export default function AdContainer({ slot = '0000000000', format = 'auto' }: Ad
         // Ignore AdSense errors
       }
     }
-  }, [slot]);
-
-  const hasClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID &&
-                      process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID !== 'ca-pub-0000000000000000';
+  }, [slot, hasClientId]);
 
   if (!hasClientId) {
     return null;
