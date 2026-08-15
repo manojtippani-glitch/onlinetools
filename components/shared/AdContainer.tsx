@@ -29,7 +29,7 @@ export default function AdContainer({ slot = '0000000000', format = 'auto' }: Ad
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 min-h-[250px] flex items-center justify-center">
+    <div className="panel-sunken p-4 min-h-[250px] flex items-center justify-center">
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}

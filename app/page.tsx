@@ -1,50 +1,50 @@
 'use client';
 
-
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import AdContainer from '@/components/shared/AdContainer';
+import Icon from '@/components/shared/Icon';
 
 const TOOLS = [
-  // Developer Tools
-  { id: 'json-formatter', name: 'JSON Formatter', category: 'developer', description: 'Format and validate JSON with pretty printing', icon: '📄' },
-  { id: 'base64-encoder', name: 'Base64 Encoder', category: 'developer', description: 'Encode/decode text to Base64', icon: '🔐' },
-  { id: 'url-encoder', name: 'URL Encoder', category: 'developer', description: 'Encode/decode URLs safely', icon: '🔗' },
-  { id: 'code-beautifier', name: 'Code Beautifier', category: 'developer', description: 'Format and beautify code', icon: '✨' },
-  { id: 'regex-tester', name: 'Regex Tester', category: 'developer', description: 'Test and validate regular expressions', icon: '🧪' },
-  { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'Generate MD5, SHA1, SHA256 hashes', icon: '#️⃣' },
-  { id: 'html-encoder', name: 'HTML Encoder', category: 'developer', description: 'Encode/decode HTML entities', icon: '🏷️' },
-  { id: 'xml-formatter', name: 'XML Formatter', category: 'developer', description: 'Format and validate XML', icon: '📋' },
+  // Developer
+  { id: 'json-formatter', name: 'JSON Formatter', category: 'developer', description: 'Pretty-print, minify, and catch syntax errors with a line number' },
+  { id: 'base64-encoder', name: 'Base64', category: 'developer', description: 'Round-trip text and Base64 in either direction' },
+  { id: 'url-encoder', name: 'URL Encoder', category: 'developer', description: 'Percent-encoding for query strings and path segments' },
+  { id: 'code-beautifier', name: 'Code Beautifier', category: 'developer', description: 'Re-indent JavaScript, JSON, HTML, and XML' },
+  { id: 'regex-tester', name: 'Regex Tester', category: 'developer', description: 'Match a pattern against sample text as you type' },
+  { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'Quick digests for cache keys and checksums' },
+  { id: 'html-encoder', name: 'HTML Entities', category: 'developer', description: 'Escape angle brackets, quotes, and ampersands' },
+  { id: 'xml-formatter', name: 'XML Formatter', category: 'developer', description: 'Indent nested XML and spot unclosed tags' },
 
-  // Content Tools
-  { id: 'word-counter', name: 'Word Counter', category: 'content', description: 'Count words, characters, sentences', icon: '📊' },
-  { id: 'case-converter', name: 'Case Converter', category: 'content', description: 'Convert text case (uppercase, lowercase, title)', icon: '🔤' },
-  { id: 'slug-generator', name: 'Slug Generator', category: 'content', description: 'Generate URL-friendly slugs', icon: '🎯' },
-  { id: 'markdown-editor', name: 'Markdown Editor', category: 'content', description: 'Live Markdown to HTML preview', icon: '📝' },
-  { id: 'meta-tag-generator', name: 'Meta Tag Generator', category: 'content', description: 'Generate SEO meta tags', icon: '🏷️' },
-  { id: 'plagiarism-checker', name: 'Text Duplicate', category: 'content', description: 'Check for duplicate text', icon: '🔍' },
+  // Text
+  { id: 'word-counter', name: 'Word Counter', category: 'content', description: 'Words, characters, and sentences, counted live' },
+  { id: 'case-converter', name: 'Case Converter', category: 'content', description: 'camelCase, snake_case, kebab-case, Title Case' },
+  { id: 'slug-generator', name: 'Slug Generator', category: 'content', description: 'Turn a headline into a clean URL segment' },
+  { id: 'markdown-editor', name: 'Markdown Editor', category: 'content', description: 'Write Markdown, watch the HTML update beside it' },
+  { id: 'meta-tag-generator', name: 'Meta Tags', category: 'content', description: 'Build the title, description, and OG tags for a page' },
+  { id: 'plagiarism-checker', name: 'Duplicate Text', category: 'content', description: 'Compare two passages and see what overlaps' },
 
-  // Image Tools
-  { id: 'qr-code-generator', name: 'QR Code Generator', category: 'image', description: 'Generate QR codes from text', icon: '📲' },
-  { id: 'qr-code-decoder', name: 'QR Code Decoder', category: 'image', description: 'Decode QR codes', icon: '🔎' },
-  { id: 'color-converter', name: 'Color Converter', category: 'image', description: 'Convert between color formats', icon: '🎨' },
-  { id: 'color-palette', name: 'Color Palette', category: 'image', description: 'Generate color palettes', icon: '🌈' },
-  { id: 'image-compressor', name: 'Image Compressor', category: 'image', description: 'Compress images without quality loss', icon: '🖼️' },
+  // Image
+  { id: 'qr-code-generator', name: 'QR Code Generator', category: 'image', description: 'Encode a link or a note into a scannable code' },
+  { id: 'qr-code-decoder', name: 'QR Code Reader', category: 'image', description: 'Read the text back out of a QR image' },
+  { id: 'color-converter', name: 'Color Converter', category: 'image', description: 'HEX, RGB, and HSL side by side' },
+  { id: 'color-palette', name: 'Color Palette', category: 'image', description: 'Build a palette around one base color' },
+  { id: 'image-compressor', name: 'Image Compressor', category: 'image', description: 'Shrink JPG and PNG files before you ship them' },
 
-  // Converter Tools
-  { id: 'json-to-csv', name: 'JSON to CSV', category: 'converter', description: 'Convert JSON to CSV format', icon: '📊' },
-  { id: 'unit-converter', name: 'Unit Converter', category: 'converter', description: 'Convert between units (length, weight, etc)', icon: '📏' },
-  { id: 'temperature-converter', name: 'Temperature Converter', category: 'converter', description: 'Convert between temperature scales', icon: '🌡️' },
-  { id: 'password-generator', name: 'Password Generator', category: 'converter', description: 'Generate strong random passwords', icon: '🔑' },
-  { id: 'random-generator', name: 'Random Generator', category: 'converter', description: 'Generate random strings and numbers', icon: '🎲' },
+  // Convert
+  { id: 'json-to-csv', name: 'JSON to CSV', category: 'converter', description: 'Flatten an array of objects into spreadsheet rows' },
+  { id: 'unit-converter', name: 'Unit Converter', category: 'converter', description: 'Length, weight, and volume across metric and imperial' },
+  { id: 'temperature-converter', name: 'Temperature', category: 'converter', description: 'Celsius, Fahrenheit, and Kelvin' },
+  { id: 'password-generator', name: 'Password Generator', category: 'converter', description: 'Random strings with the character sets you pick' },
+  { id: 'random-generator', name: 'Random Values', category: 'converter', description: 'Numbers, strings, and throwaway IDs on demand' },
 ];
 
 const CATEGORIES = [
-  { id: 'developer', name: 'Developer Tools', icon: '👨‍💻' },
-  { id: 'content', name: 'Content Tools', icon: '📝' },
-  { id: 'image', name: 'Image Tools', icon: '🎨' },
-  { id: 'converter', name: 'Converter Tools', icon: '🔄' },
+  { id: 'developer', name: 'Developer' },
+  { id: 'content', name: 'Text' },
+  { id: 'image', name: 'Image' },
+  { id: 'converter', name: 'Convert' },
 ];
 
 export default function Home() {
@@ -54,118 +54,157 @@ export default function Home() {
 
   useEffect(() => {
     const categoryParam = searchParams.get('category');
-    if (categoryParam) {
-      setCategory(categoryParam);
-    }
+    if (categoryParam) setCategory(categoryParam);
   }, [searchParams]);
 
   const filtered = useMemo(() => {
-    return TOOLS.filter(tool => {
-      const matchesSearch = tool.name.toLowerCase().includes(search.toLowerCase()) ||
-                          tool.description.toLowerCase().includes(search.toLowerCase());
+    const q = search.trim().toLowerCase();
+    return TOOLS.filter((tool) => {
+      const matchesSearch =
+        !q ||
+        tool.name.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q);
       const matchesCategory = !category || tool.category === category;
       return matchesSearch && matchesCategory;
     });
   }, [search, category]);
 
   return (
-    <div className="space-y-12">
-      {/* Hero Section */}
-      <div className="text-center space-y-4 mb-12">
-        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Free Online Tools for Everyone
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          25+ free, instant tools for developers, content creators, and more. No login required, no ads interfering with tools, 100% client-side processing.
-        </p>
-      </div>
+    <div>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0 grid-veil pointer-events-none" aria-hidden="true" />
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5">Twenty-four tools</p>
+            <h1 className="display text-[2.75rem] sm:text-6xl mb-6">
+              The utilities you
+              <br />
+              keep googling.
+            </h1>
+            <p className="text-lg text-ink-muted leading-relaxed max-w-xl">
+              Formatters, encoders, and converters for the small jobs that
+              interrupt real work. They run inside this tab — whatever you paste
+              stays on your machine.
+            </p>
+          </div>
 
-      {/* Search Bar */}
-      <div className="max-w-2xl mx-auto">
-        <input
-          type="search"
-          placeholder="Search tools..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
+          {/* Search */}
+          <div className="mt-10 max-w-md relative">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-subtle pointer-events-none">
+              <Icon name="search" className="w-4 h-4" />
+            </span>
+            <input
+              type="search"
+              placeholder="Search tools"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface border border-line text-[14px] placeholder:text-ink-subtle focus:outline-none focus:border-line-strong transition-colors"
+            />
+          </div>
+        </div>
+      </section>
 
-      {/* Category Filter */}
-      <div className="flex flex-wrap gap-3 justify-center">
-        <button
-          onClick={() => setCategory('')}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            !category
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700'
-          }`}
-        >
-          All Tools
-        </button>
-        {CATEGORIES.map(cat => (
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        {/* Filters */}
+        <div className="flex flex-wrap items-center gap-1.5 py-8">
           <button
-            key={cat.id}
-            onClick={() => setCategory(cat.id)}
-            className={`px-4 py-2 rounded-lg font-medium transition ${
-              category === cat.id
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700'
+            onClick={() => setCategory('')}
+            className={`h-8 px-3 rounded-lg text-[13px] font-medium transition-colors ${
+              !category
+                ? 'bg-invert-bg text-invert-fg'
+                : 'text-ink-muted hover:text-ink hover:bg-surface-muted'
             }`}
           >
-            {cat.icon} {cat.name}
+            All
           </button>
-        ))}
-      </div>
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setCategory(cat.id)}
+              className={`h-8 px-3 rounded-lg text-[13px] font-medium inline-flex items-center gap-1.5 transition-colors ${
+                category === cat.id
+                  ? 'bg-invert-bg text-invert-fg'
+                  : 'text-ink-muted hover:text-ink hover:bg-surface-muted'
+              }`}
+            >
+              <Icon name={cat.id} className="w-3.5 h-3.5" />
+              {cat.name}
+            </button>
+          ))}
+          <span className="ml-auto font-mono text-[11px] text-ink-subtle tabular-nums">
+            {filtered.length} {filtered.length === 1 ? 'tool' : 'tools'}
+          </span>
+        </div>
 
-      {/* Ad Section */}
-      <div className="flex justify-center">
-        <div className="w-full max-w-4xl">
+        {/* Grid */}
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {filtered.map((tool) => (
+              <Link
+                key={tool.id}
+                href={`/tools/${tool.category}/${tool.id}`}
+                className="tool-card group"
+              >
+                <span className="text-ink-subtle group-hover:text-accent transition-colors">
+                  <Icon name={tool.id} className="w-[18px] h-[18px]" />
+                </span>
+                <h2 className="text-[15px] font-medium tracking-tight mt-1">
+                  {tool.name}
+                </h2>
+                <p className="text-[13px] text-ink-muted leading-relaxed">
+                  {tool.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="py-20 text-center">
+            <p className="text-ink-muted text-[14px]">
+              Nothing matches “{search}”.
+            </p>
+            <button
+              onClick={() => {
+                setSearch('');
+                setCategory('');
+              }}
+              className="btn btn-secondary btn-sm mt-4"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
+
+        {/* Ad */}
+        <div className="mt-16">
           <AdContainer slot="0000000000" format="horizontal" />
         </div>
-      </div>
 
-      {/* Tools Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map(tool => (
-          <Link key={tool.id} href={`/tools/${tool.category}/${tool.id}`}>
-            <div className="group bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition cursor-pointer h-full">
-              <div className="text-4xl mb-3">{tool.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-                {tool.name}
+        {/* Notes — concrete claims, not badges */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-line border border-line rounded-xl overflow-hidden mt-20">
+          {[
+            {
+              title: 'Nothing leaves the tab',
+              body: 'Every tool is JavaScript running locally. There is no upload step and no server to send your input to.',
+            },
+            {
+              title: 'No account, no limits',
+              body: 'No sign-up wall, no daily quota, and no email capture before you can use a formatter.',
+            },
+            {
+              title: 'Links carry your input',
+              body: 'Most tools read from the URL, so you can share a prewired link instead of pasting instructions.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="bg-canvas p-6">
+              <h3 className="text-[14px] font-medium tracking-tight mb-2">
+                {item.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                {tool.description}
+              <p className="text-[13px] text-ink-muted leading-relaxed">
+                {item.body}
               </p>
             </div>
-          </Link>
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
-            No tools found. Try a different search.
-          </p>
-        </div>
-      )}
-
-      {/* Trust Signals */}
-      <div className="grid grid-cols-3 gap-6 py-12 border-t border-gray-200 dark:border-gray-800">
-        <div className="text-center">
-          <div className="text-3xl mb-2">✅</div>
-          <p className="font-semibold text-gray-900 dark:text-white">100% Free</p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">No hidden costs</p>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl mb-2">🔒</div>
-          <p className="font-semibold text-gray-900 dark:text-white">Private</p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">No data uploaded</p>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl mb-2">⚡</div>
-          <p className="font-semibold text-gray-900 dark:text-white">Instant</p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Instant processing</p>
+          ))}
         </div>
       </div>
     </div>

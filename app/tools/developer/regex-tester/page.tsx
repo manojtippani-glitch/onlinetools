@@ -60,28 +60,28 @@ export default function RegexTester() {
       <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Regex Tester' }]} />
 
       <div>
-        <h1 className="text-4xl font-bold mb-2">Regex Tester</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Test and validate regular expressions against test strings.
+        <h1 className="headline text-[2rem] mb-2.5">Regex Tester</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Write a pattern and see what it matches in your sample text as you type.
         </p>
       </div>
 
       <div className="space-y-4">
         {/* Pattern Input */}
         <div>
-          <label className="font-semibold text-gray-900 dark:text-white mb-2 block">Regular Expression Pattern</label>
+          <label className="text-[13px] font-medium mb-2 block">Regular Expression Pattern</label>
           <input
             type="text"
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
             placeholder="/pattern/flags"
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 rounded-lg border border-line bg-surface font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Flags */}
         <div>
-          <label className="font-semibold text-gray-900 dark:text-white mb-2 block">Flags</label>
+          <label className="text-[13px] font-medium mb-2 block">Flags</label>
           <div className="flex gap-4">
             {['g', 'i', 'm', 's'].map(flag => (
               <label key={flag} className="flex items-center gap-2 cursor-pointer">
@@ -97,48 +97,44 @@ export default function RegexTester() {
                   }}
                   className="w-4 h-4"
                 />
-                <span className="text-gray-900 dark:text-white font-mono">{flag}</span>
+                <span className="text-ink font-mono">{flag}</span>
               </label>
             ))}
           </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">g=global, i=case-insensitive, m=multiline, s=dotAll</p>
+          <p className="text-xs text-ink-subtle mt-2">g=global, i=case-insensitive, m=multiline, s=dotAll</p>
         </div>
 
         {/* Test String */}
         <div>
-          <label className="font-semibold text-gray-900 dark:text-white mb-2 block">Test String</label>
+          <label className="text-[13px] font-medium mb-2 block">Test String</label>
           <textarea
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Enter text to test..."
-            className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            className="field h-40"
           />
         </div>
 
         {/* Output */}
         <div>
           <div className="flex justify-between items-center mb-2 h-9">
-            <label className="font-semibold text-gray-900 dark:text-white block">Results</label>
+            <label className="text-[13px] font-medium block">Results</label>
             {output ? (
               <button
                 onClick={handleCopy}
-                className={`text-sm px-3 py-1 rounded transition ${
-                  copied
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                className="btn btn-secondary btn-sm"
               >
-                {copied ? '✓ Copied!' : 'Copy'}
+                {copied ? 'Copied' : 'Copy'}
               </button>
             ) : (
-              <div className="w-12 h-9" />
+              <div className="h-[30px]" />
             )}
           </div>
-          <div className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
+          <div className="panel-sunken w-full h-40 p-4 font-mono text-[13px] leading-relaxed overflow-auto">
             {output ? (
-              <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
+              <pre className="text-ink">{output}</pre>
             ) : (
-              <p className="text-gray-500">Results will appear here...</p>
+              <p className="text-ink-subtle">Results will appear here...</p>
             )}
           </div>
         </div>
@@ -146,7 +142,7 @@ export default function RegexTester() {
 
       {/* Error Message */}
       {error && (
-        <div className="p-4 rounded-lg bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100">
+        <div className="panel p-4 text-[13px] text-red-700 dark:text-red-300 border-red-300 dark:border-red-900">
           {error}
         </div>
       )}
@@ -155,13 +151,13 @@ export default function RegexTester() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={handleTest}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="btn btn-primary"
         >
           Test
         </button>
         <button
           onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-medium"
+          className="btn btn-ghost"
         >
           Clear
         </button>

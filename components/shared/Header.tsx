@@ -1,14 +1,20 @@
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">🛠️</span>
-          <span className="font-bold text-xl text-gray-900 dark:text-white">OnlineTools</span>
+    <header className="sticky top-0 z-50 border-b border-line bg-canvas/80 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 h-14 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="w-6 h-6 rounded-md bg-invert-bg text-invert-fg grid place-items-center font-mono text-[11px] font-bold tracking-tight">
+            OT
+          </span>
+          <span className="font-medium tracking-tight text-[15px]">
+            OnlineTools
+          </span>
         </Link>
 
+        <ThemeToggle />
       </div>
     </header>
   );

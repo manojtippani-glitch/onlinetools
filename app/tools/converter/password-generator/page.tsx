@@ -26,14 +26,19 @@ export default function PasswordGenerator() {
   return (
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Password Generator' }]} />
-      <div><h1 className="text-4xl font-bold mb-2">Password Generator</h1></div>
+      <div>
+        <h1 className="headline text-[2rem] mb-2.5">Password Generator</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Generate a random password at the length you want, with the character sets you pick.
+        </p>
+      </div>
       <div className="space-y-4">
         <div>
           <label className="block mb-2 font-medium">Length: {length}</label>
           <input type="range" min="8" max="64" value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full" />
         </div>
-        <button onClick={generatePassword} className="w-full px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button>
-        {password && <div className="p-4 rounded-lg bg-gray-50 dark:bg-gray-900 font-mono"><p className="mb-2 break-all">{password}</p><button onClick={handleCopy} className={`text-sm px-3 py-1 rounded ${copied ? 'bg-green-600 text-white' : 'bg-blue-600 text-white'}`}>{copied ? '✓ Copied!' : 'Copy'}</button></div>}
+        <button onClick={generatePassword} className="btn btn-primary w-full">Generate</button>
+        {password && <div className="p-4 rounded-lg bg-surface-sunken font-mono"><p className="mb-2 break-all">{password}</p><button onClick={handleCopy} className={`btn btn-secondary btn-sm`}>{copied ? 'Copied' : 'Copy'}</button></div>}
       </div>
       <AdContainer slot="1818181818" format="horizontal" />
     </div>

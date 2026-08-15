@@ -1,26 +1,286 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Palette — warm neutrals, near-monochrome, one restrained accent.
+   Raw values live here; @theme inline maps them to utilities so a
+   single class works in both themes.
+   --------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: #fafaf9;
+  --canvas-alt: #f5f5f4;
+  --surface: #ffffff;
+  --surface-muted: #f5f5f4;
+  --surface-sunken: #f0efee;
+
+  --line: #e7e5e4;
+  --line-strong: #d6d3d1;
+
+  --ink: #1c1917;
+  --ink-muted: #57534e;
+  --ink-subtle: #8b8682;
+
+  --accent: #b45309;
+  --accent-soft: #fef3c7;
+
+  --invert-bg: #1c1917;
+  --invert-fg: #fafaf9;
+  --invert-bg-hover: #292524;
+
+  --ring: rgba(180, 83, 9, 0.35);
+  --shadow-raise: 0 1px 2px rgba(28, 25, 23, 0.04), 0 8px 24px -12px rgba(28, 25, 23, 0.12);
+}
+
+.dark {
+  --canvas: #0a0a0a;
+  --canvas-alt: #101010;
+  --surface: #141414;
+  --surface-muted: #1a1a1a;
+  --surface-sunken: #0f0f0f;
+
+  --line: #262626;
+  --line-strong: #383838;
+
+  --ink: #fafaf9;
+  --ink-muted: #a1a1aa;
+  --ink-subtle: #6f6f76;
+
+  --accent: #f0b429;
+  --accent-soft: #2a1f08;
+
+  --invert-bg: #fafaf9;
+  --invert-fg: #0a0a0a;
+  --invert-bg-hover: #e7e5e4;
+
+  --ring: rgba(240, 180, 41, 0.35);
+  --shadow-raise: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-canvas-alt: var(--canvas-alt);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-invert-bg: var(--invert-bg);
+  --color-invert-fg: var(--invert-fg);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-code), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------------------------------------------
+   Base
+   --------------------------------------------------------------- */
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--invert-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Display type — tight tracking is what separates considered
+   typography from default Tailwind sizing. */
+.display {
+  letter-spacing: -0.033em;
+  line-height: 1.02;
+  font-weight: 560;
+}
+
+.headline {
+  letter-spacing: -0.021em;
+  line-height: 1.15;
+  font-weight: 560;
+}
+
+/* Editorial eyebrow — small mono caps. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------
+   Components
+   --------------------------------------------------------------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.panel-sunken {
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.field {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  color: var(--ink);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  resize: none;
+}
+
+.field::placeholder {
+  color: var(--ink-subtle);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.375rem;
+  padding: 0 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--invert-bg);
+  color: var(--invert-fg);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--invert-bg-hover);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--surface-muted);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-muted);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--surface-muted);
+  color: var(--ink);
+}
+
+.btn-sm {
+  height: 1.875rem;
+  padding: 0 0.625rem;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.select {
+  height: 2.125rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  color: var(--ink);
+  padding: 0 2rem 0 0.75rem;
+  font-size: 0.8125rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b8682' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Tool card — the hover lift is subtle on purpose. */
+.tool-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  height: 100%;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.tool-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-raise);
+  transform: translateY(-2px);
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+/* Grid texture behind the hero — adds depth without a gradient. */
+.grid-veil {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
 }

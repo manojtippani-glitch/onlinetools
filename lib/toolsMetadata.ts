@@ -1,137 +1,177 @@
+/**
+ * Per-tool SEO copy.
+ *
+ * Rules that keep this from reading like filler:
+ *  - Lead the description with what the tool does to your input, not with
+ *    "Free online tool that…".
+ *  - Vary the sentence shape. If every entry has the same rhythm, the set
+ *    reads as generated regardless of how accurate each line is.
+ *  - Name a specific capability (line + column, padding, indent width) so
+ *    the description says something a competitor's copy doesn't.
+ *  - Keep descriptions under ~155 chars so search results don't truncate.
+ */
+
 export const TOOLS_METADATA = {
-  // Developer Tools
+  // --- Developer ---
   'json-formatter': {
-    title: 'JSON Formatter & Validator - Format JSON Online',
-    description: 'Format, validate, and minify JSON with custom indentation. Free online tool with pretty printing. 100% client-side processing.',
-    keywords: 'json formatter, json validator, json beautifier, format json online, minify json',
+    title: 'JSON Formatter and Validator',
+    description:
+      'Re-indent JSON, collapse it to a single line, or find the exact line and column where the syntax breaks.',
+    keywords: 'json formatter, json validator, json beautifier, format json, minify json',
   },
   'base64-encoder': {
-    title: 'Base64 Encoder/Decoder - Encode & Decode Online',
-    description: 'Encode text to Base64 or decode Base64 strings. Free online Base64 encoder/decoder tool. 100% client-side.',
-    keywords: 'base64 encoder, base64 decoder, encode base64, decode base64, base64 online',
+    title: 'Base64 Encoder and Decoder',
+    description:
+      'Convert text to Base64, or read an encoded string back to plain text. Padding is handled for you.',
+    keywords: 'base64 encoder, base64 decoder, encode base64, decode base64',
   },
   'url-encoder': {
-    title: 'URL Encoder/Decoder - Encode URLs Safely Online',
-    description: 'Encode text to URL-safe format or decode encoded URLs. Free online URL encoder/decoder tool.',
-    keywords: 'url encoder, url decoder, encode url, decode url, url safe encoding',
+    title: 'URL Encoder and Decoder',
+    description:
+      'Percent-encode text for query strings and path segments, or decode a URL that arrived escaped.',
+    keywords: 'url encoder, url decoder, percent encoding, encode url, decode url',
   },
   'code-beautifier': {
-    title: 'Code Beautifier - Format & Beautify Code Online',
-    description: 'Format and beautify code with proper indentation. Supports JavaScript, JSON, HTML, XML. Free online code formatter.',
-    keywords: 'code beautifier, code formatter, format code, beautify code, pretty print code',
+    title: 'Code Beautifier for JavaScript, JSON, HTML and XML',
+    description:
+      'Re-indent minified or badly formatted code. Choose the language and indent width, then paste.',
+    keywords: 'code beautifier, code formatter, format javascript, beautify code, pretty print',
   },
   'regex-tester': {
-    title: 'Regex Tester - Test Regular Expressions Online',
-    description: 'Test and validate regular expressions against test strings. Real-time regex matching with flags support.',
-    keywords: 'regex tester, regular expression tester, test regex, regex validator, pattern tester',
+    title: 'Regex Tester with Live Matching',
+    description:
+      'Write a pattern and watch what it matches in your sample text as you type. Supports the usual flags.',
+    keywords: 'regex tester, regular expression tester, test regex, regex matcher',
   },
   'hash-generator': {
-    title: 'Hash Generator - Generate Text Hashes Online',
-    description: 'Generate hash values for text. Simple hash functions for demonstration. Free online hash generator.',
-    keywords: 'hash generator, text hash, generate hash, hash online, hash function',
+    title: 'Hash Generator',
+    description:
+      'Turn any string into a short digest for cache keys, fingerprints, and quick comparisons.',
+    keywords: 'hash generator, text hash, checksum, digest generator',
   },
   'html-encoder': {
-    title: 'HTML Entity Encoder/Decoder - Encode HTML Safely',
-    description: 'Encode and decode HTML entities safely. Convert special characters to HTML entities and vice versa.',
-    keywords: 'html encoder, html decoder, html entity, encode html, decode html',
+    title: 'HTML Entity Encoder and Decoder',
+    description:
+      'Escape angle brackets, quotes, and ampersands so markup renders as text — or reverse it.',
+    keywords: 'html encoder, html decoder, html entities, escape html',
   },
   'xml-formatter': {
-    title: 'XML Formatter - Format & Validate XML Online',
-    description: 'Format and validate XML with proper indentation. Free online XML formatter and validator tool.',
-    keywords: 'xml formatter, xml validator, format xml, validate xml, xml beautifier',
+    title: 'XML Formatter',
+    description:
+      'Indent nested XML so the structure is readable, and spot the tag you forgot to close.',
+    keywords: 'xml formatter, xml beautifier, format xml, indent xml',
   },
 
-  // Content Tools
+  // --- Text ---
   'word-counter': {
-    title: 'Word Counter - Count Words, Characters & More',
-    description: 'Count words, characters, sentences, paragraphs in real-time. Free online word counter and text statistics tool.',
-    keywords: 'word counter, character counter, word counter online, text statistics, count words',
+    title: 'Word and Character Counter',
+    description:
+      'Live counts for words, characters, sentences, lines, and paragraphs as you type or paste.',
+    keywords: 'word counter, character counter, count words, text statistics',
   },
   'case-converter': {
-    title: 'Case Converter - Convert Text Case Online',
-    description: 'Convert text between different cases: uppercase, lowercase, title case, camelCase, snake_case, kebab-case.',
-    keywords: 'case converter, text case converter, uppercase converter, lowercase converter, camelcase',
+    title: 'Case Converter for camelCase, snake_case and more',
+    description:
+      'Switch text between camelCase, snake_case, kebab-case, Title Case, upper, and lower.',
+    keywords: 'case converter, camelcase converter, snake case, kebab case, title case',
   },
   'slug-generator': {
-    title: 'Slug Generator - Generate URL-Friendly Slugs',
-    description: 'Generate URL-friendly slugs from text. Create clean URLs for web pages and content. Free online slug generator.',
-    keywords: 'slug generator, url slug generator, generate slug, url friendly slug, permalink',
+    title: 'URL Slug Generator',
+    description:
+      'Turn a headline into a clean URL segment: lowercased, hyphenated, punctuation stripped.',
+    keywords: 'slug generator, url slug, permalink generator, seo slug',
   },
   'markdown-editor': {
-    title: 'Markdown Editor - Live Markdown to HTML Preview',
-    description: 'Write markdown and see live HTML preview. Free online markdown editor with real-time conversion.',
-    keywords: 'markdown editor, markdown to html, live markdown preview, markdown converter',
+    title: 'Markdown Editor with Live Preview',
+    description:
+      'Write Markdown on one side and watch the rendered HTML update beside it. Copy either side.',
+    keywords: 'markdown editor, markdown preview, markdown to html, md editor',
   },
   'meta-tag-generator': {
-    title: 'Meta Tag Generator - Generate SEO Meta Tags',
-    description: 'Generate SEO meta tags for your website. Create title, description, and social meta tags. Free tool.',
-    keywords: 'meta tag generator, seo meta tags, meta description generator, open graph tags',
+    title: 'Meta Tag Generator for SEO and Open Graph',
+    description:
+      'Fill in a title and description, then copy the meta and Open Graph tags into your page head.',
+    keywords: 'meta tag generator, open graph tags, seo meta tags, twitter card',
   },
   'plagiarism-checker': {
-    title: 'Text Duplicate Checker - Check for Duplicate Text',
-    description: 'Check for duplicate text and analyze uniqueness. Free online text duplicate checker and plagiarism detector.',
-    keywords: 'plagiarism checker, duplicate text checker, text similarity, plagiarism detector',
+    title: 'Duplicate Text Checker',
+    description:
+      'Compare two passages and see which phrases overlap, with a rough similarity score.',
+    keywords: 'duplicate text checker, text similarity, compare text, overlap checker',
   },
 
-  // Image Tools
+  // --- Image ---
   'qr-code-generator': {
-    title: 'QR Code Generator - Generate QR Codes Online',
-    description: 'Generate QR codes from text or URLs. Free online QR code generator with customizable output.',
-    keywords: 'qr code generator, generate qr code, qr code maker, qr code creator',
+    title: 'QR Code Generator',
+    description:
+      'Encode a link, a note, or contact details into a QR code you can download and print.',
+    keywords: 'qr code generator, make qr code, qr code maker, generate qr',
   },
   'qr-code-decoder': {
-    title: 'QR Code Decoder - Decode QR Codes Online',
-    description: 'Decode and read QR codes from images. Free online QR code decoder and reader tool.',
-    keywords: 'qr code decoder, decode qr code, read qr code, qr code reader',
+    title: 'QR Code Reader',
+    description:
+      'Upload a QR image and get the text back out of it, without installing a phone app.',
+    keywords: 'qr code reader, decode qr code, scan qr code, read qr',
   },
   'color-converter': {
-    title: 'Color Converter - Convert Between Color Formats',
-    description: 'Convert colors between HEX, RGB, HSL formats. Free online color converter with live preview.',
-    keywords: 'color converter, hex to rgb, rgb converter, color code converter, color format',
+    title: 'Color Converter for HEX, RGB and HSL',
+    description:
+      'Enter a color in any of the three formats and see the other two update, with a live swatch.',
+    keywords: 'color converter, hex to rgb, rgb to hsl, color format converter',
   },
   'color-palette': {
-    title: 'Color Palette Generator - Generate Color Palettes',
-    description: 'Generate beautiful color palettes. Free online color palette generator with hex codes.',
-    keywords: 'color palette generator, palette generator, color scheme generator, palette creator',
+    title: 'Color Palette Generator',
+    description:
+      'Pick a base color and build a matching set, with hex codes ready to drop into your styles.',
+    keywords: 'color palette generator, color scheme, palette maker, hex palette',
   },
   'image-compressor': {
-    title: 'Image Compressor - Compress Images Without Quality Loss',
-    description: 'Compress images without losing quality. Free online image compressor for JPG, PNG, WebP.',
-    keywords: 'image compressor, compress image, image optimizer, reduce image size, image minifier',
+    title: 'Image Compressor',
+    description:
+      'Shrink JPG and PNG files before you ship them. Compression happens locally, so nothing uploads.',
+    keywords: 'image compressor, compress jpg, compress png, reduce image size',
   },
 
-  // Converter Tools
+  // --- Convert ---
   'json-to-csv': {
-    title: 'JSON to CSV Converter - Convert JSON to CSV Online',
-    description: 'Convert JSON data to CSV format. Free online JSON to CSV converter tool.',
-    keywords: 'json to csv, convert json to csv, json csv converter, json to csv online',
+    title: 'JSON to CSV Converter',
+    description:
+      'Flatten an array of objects into spreadsheet rows, using the object keys as the header line.',
+    keywords: 'json to csv, convert json to csv, json csv converter, export json',
   },
   'unit-converter': {
-    title: 'Unit Converter - Convert Between Units Online',
-    description: 'Convert between different units: length, weight, volume, temperature. Free online unit converter.',
-    keywords: 'unit converter, convert units, length converter, weight converter, measurement converter',
+    title: 'Unit Converter',
+    description:
+      'Convert length, weight, and volume across metric and imperial without the mental arithmetic.',
+    keywords: 'unit converter, metric to imperial, length converter, weight converter',
   },
   'temperature-converter': {
-    title: 'Temperature Converter - Convert Temperature Scales',
-    description: 'Convert between Celsius, Fahrenheit, and Kelvin. Free online temperature converter tool.',
-    keywords: 'temperature converter, celsius to fahrenheit, convert temperature, temperature calculator',
+    title: 'Temperature Converter',
+    description:
+      'Celsius, Fahrenheit, and Kelvin, converted as you type into any of the three fields.',
+    keywords: 'temperature converter, celsius to fahrenheit, kelvin converter',
   },
   'password-generator': {
-    title: 'Password Generator - Generate Strong Random Passwords',
-    description: 'Generate secure random passwords with customizable length and character sets. Free online password generator.',
-    keywords: 'password generator, random password generator, strong password, secure password',
+    title: 'Password Generator',
+    description:
+      'Generate a random password at the length you want, using the character sets you choose.',
+    keywords: 'password generator, random password, strong password, secure password',
   },
   'random-generator': {
-    title: 'Random Generator - Generate Random Numbers & Strings',
-    description: 'Generate random numbers and strings. Free online random data generator tool.',
-    keywords: 'random generator, random number generator, random string generator, random data',
+    title: 'Random Number and String Generator',
+    description:
+      'Produce random numbers, strings, and throwaway IDs for testing and seed data.',
+    keywords: 'random generator, random number generator, random string, test data',
   },
 };
 
 export function getToolMetadata(toolId: string) {
-  return TOOLS_METADATA[toolId as keyof typeof TOOLS_METADATA] || {
-    title: 'OnlineTools - Free Online Tools',
-    description: 'Free online tools for developers, content creators, and more.',
-    keywords: 'online tools, free tools, developer tools',
-  };
+  return (
+    TOOLS_METADATA[toolId as keyof typeof TOOLS_METADATA] || {
+      title: 'OnlineTools',
+      description:
+        'Formatters, encoders, and converters that run in your browser.',
+      keywords: 'online tools, developer tools',
+    }
+  );
 }

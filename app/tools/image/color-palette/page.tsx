@@ -9,13 +9,18 @@ export default function ColorPalette() {
   return (
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Color Palette' }]} />
-      <div><h1 className="text-4xl font-bold mb-2">Color Palette Generator</h1></div>
+      <div>
+        <h1 className="headline text-[2rem] mb-2.5">Color Palette Generator</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Pick a base color and build a matching set, with hex codes ready to copy.
+        </p>
+      </div>
       <div className="grid grid-cols-5 gap-3">
         {colors.map((color) => (
           <div key={color} className="h-24 rounded-lg" style={{ backgroundColor: color }}><p className="p-2 font-mono text-xs text-white">{color}</p></div>
         ))}
       </div>
-      <button className="px-6 py-2 bg-blue-600 text-white rounded-lg">Generate Palette</button>
+      <button className="btn btn-primary">Generate Palette</button>
       <AdContainer slot="1717171717" format="horizontal" />
     </div>
   );

@@ -7,11 +7,16 @@ export default function ImageCompressor() {
   return (
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Image Compressor' }]} />
-      <div><h1 className="text-4xl font-bold mb-2">Image Compressor</h1></div>
-      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-        <p className="text-gray-600 dark:text-gray-400">Drop image here or click to upload</p>
+      <div>
+        <h1 className="headline text-[2rem] mb-2.5">Image Compressor</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Shrink JPG and PNG files before you ship them. Nothing is uploaded.
+        </p>
       </div>
-      <button className="px-6 py-2 bg-blue-600 text-white rounded-lg">Select Image</button>
+      <div className="border border-dashed border-line-strong rounded-xl p-10 text-center">
+        <p className="text-ink-muted">Drop image here or click to upload</p>
+      </div>
+      <button className="btn btn-primary">Select Image</button>
       <AdContainer slot="1717171718" format="horizontal" />
     </div>
   );

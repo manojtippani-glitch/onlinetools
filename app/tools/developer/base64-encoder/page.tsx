@@ -87,9 +87,9 @@ export default function Base64Encoder() {
       <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Base64 Encoder' }]} />
 
       <div>
-        <h1 className="text-4xl font-bold mb-2">Base64 Encoder/Decoder</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Encode text to Base64 or decode Base64 strings. 100% client-side processing.
+        <h1 className="headline text-[2rem] mb-2.5">Base64 Encoder and Decoder</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Encode text to Base64 or read it back out. Padding is handled for you.
         </p>
       </div>
 
@@ -97,15 +97,15 @@ export default function Base64Encoder() {
         {/* Input Section */}
         <div className="space-y-3">
           <div className="flex items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Input</label>
+            <label className="text-[13px] font-medium">Input</label>
           </div>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter text to encode or Base64 to decode..."
-            className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            className="field h-80"
           />
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-ink-subtle">
             Character count: {input.length} | Encoded size: {Math.ceil((input.length * 4) / 3)} bytes
           </p>
         </div>
@@ -113,27 +113,23 @@ export default function Base64Encoder() {
         {/* Output Section */}
         <div className="space-y-3">
           <div className="flex justify-between items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Output</label>
+            <label className="text-[13px] font-medium">Output</label>
             {output ? (
               <button
                 onClick={handleCopy}
-                className={`text-sm px-3 py-1 rounded transition ${
-                  copied
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                className="btn btn-secondary btn-sm"
               >
-                {copied ? '✓ Copied!' : 'Copy'}
+                {copied ? 'Copied' : 'Copy'}
               </button>
             ) : (
-              <div className="w-12 h-9" />
+              <div className="h-[30px]" />
             )}
           </div>
-          <div className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto break-all">
+          <div className="panel-sunken w-full h-80 p-4 font-mono text-[13px] leading-relaxed overflow-auto break-all">
             {output ? (
-              <pre className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap">{output}</pre>
+              <pre className="text-ink whitespace-pre-wrap">{output}</pre>
             ) : (
-              <p className="text-gray-500">Output will appear here...</p>
+              <p className="text-ink-subtle">Output appears here</p>
             )}
           </div>
         </div>
@@ -141,7 +137,7 @@ export default function Base64Encoder() {
 
       {/* Error/Status Message */}
       {error && (
-        <div className="p-4 rounded-lg bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100">
+        <div className="panel p-4 text-[13px] text-red-700 dark:text-red-300 border-red-300 dark:border-red-900">
           {error}
         </div>
       )}
@@ -150,25 +146,25 @@ export default function Base64Encoder() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={handleEncode}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="btn btn-primary"
         >
           Encode
         </button>
         <button
           onClick={handleDecode}
-          className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium"
+          className="btn btn-secondary"
         >
           Decode
         </button>
         <button
           onClick={handleAutoDetect}
-          className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition font-medium"
+          className="btn btn-secondary"
         >
           Auto Detect
         </button>
         <button
           onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-medium"
+          className="btn btn-ghost"
         >
           Clear
         </button>
@@ -180,18 +176,18 @@ export default function Base64Encoder() {
       </div>
 
       {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-line">
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">🔐 Encode</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Convert text to Base64 format</p>
+          <h3 className="text-[14px] font-medium mb-2">Encode</h3>
+          <p className="text-sm text-ink-muted">Convert text to Base64 format</p>
         </div>
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">🔓 Decode</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Convert Base64 back to text</p>
+          <h3 className="text-[14px] font-medium mb-2">Decode</h3>
+          <p className="text-sm text-ink-muted">Convert Base64 back to text</p>
         </div>
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">🎯 Auto Detect</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Automatically detect and convert</p>
+          <h3 className="text-[14px] font-medium mb-2">Auto detect</h3>
+          <p className="text-sm text-ink-muted">Automatically detect and convert</p>
         </div>
       </div>
     </div>

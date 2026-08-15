@@ -27,29 +27,31 @@ export default function CaseConverter() {
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Case Converter' }]} />
       <div>
-        <h1 className="text-4xl font-bold mb-2">Case Converter</h1>
-        <p className="text-gray-600 dark:text-gray-400">Convert text between different cases instantly.</p>
+        <h1 className="headline text-[2rem] mb-2.5">Case Converter</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Switch text between camelCase, snake_case, kebab-case, Title Case, upper, and lower.
+        </p>
       </div>
 
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter text here..."
-        className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+        className="field h-40"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {Object.entries(cases).map(([name, fn]) => {
           const result = fn(input);
           return (
-            <div key={name} className="p-4 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-              <p className="font-semibold text-gray-900 dark:text-white mb-2 capitalize">{name.replace(/case$/, '')}</p>
+            <div key={name} className="p-4 rounded-lg bg-surface-sunken border border-line">
+              <p className="text-[13px] font-medium mb-2 capitalize">{name.replace(/case$/, '')}</p>
               <div className="relative">
-                <code className="block font-mono text-sm text-gray-600 dark:text-gray-400 break-all mb-2">{result || '—'}</code>
+                <code className="block font-mono text-sm text-ink-muted break-all mb-2">{result || '—'}</code>
                 <button
                   onClick={() => handleCopy(result)}
                   className={`text-xs px-2 py-1 rounded transition ${
-                    copied === result ? 'bg-green-600 text-white' : 'bg-blue-600 text-white hover:bg-blue-700'
+                    copied === result ? 'bg-green-600 text-white' : 'btn-secondary'
                   }`}
                 >
                   {copied === result ? '✓' : 'Copy'}

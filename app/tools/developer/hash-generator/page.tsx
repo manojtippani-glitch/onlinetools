@@ -61,41 +61,41 @@ export default function HashGenerator() {
       <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Hash Generator' }]} />
 
       <div>
-        <h1 className="text-4xl font-bold mb-2">Hash Generator</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Generate hash values for text. Note: For production use, integrate with crypto libraries.
+        <h1 className="headline text-[2rem] mb-2.5">Hash Generator</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Turn a string into a short digest for cache keys and quick comparisons.
         </p>
       </div>
 
       <div>
-        <label className="font-semibold text-gray-900 dark:text-white mb-2 block">Input Text</label>
+        <label className="text-[13px] font-medium mb-2 block">Input Text</label>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Enter text to hash..."
-          className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="field h-40"
         />
       </div>
 
       {Object.keys(results).length > 0 && (
         <div className="space-y-3">
-          <h2 className="font-semibold text-gray-900 dark:text-white">Hash Results</h2>
+          <h2 className="text-[13px] font-medium">Hash Results</h2>
           {Object.entries(results).map(([type, hash]) => (
-            <div key={type} className="p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+            <div key={type} className="p-4 rounded-lg border border-line bg-surface-sunken">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-medium text-gray-900 dark:text-white">{type}:</span>
+                <span className="text-[13px] font-medium">{type}:</span>
                 <button
                   onClick={() => handleCopy(hash)}
-                  className={`text-sm px-3 py-1 rounded transition ${
+                  className={`btn btn-sm ${
                     copied === hash
                       ? 'bg-green-600 text-white'
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'btn-secondary'
                   }`}
                 >
                   {copied === hash ? '✓ Copied!' : 'Copy'}
                 </button>
               </div>
-              <code className="block font-mono text-sm text-gray-900 dark:text-gray-100 break-all">{hash}</code>
+              <code className="block font-mono text-sm text-ink break-all">{hash}</code>
             </div>
           ))}
         </div>
@@ -104,13 +104,13 @@ export default function HashGenerator() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={handleGenerate}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="btn btn-primary"
         >
           Generate
         </button>
         <button
           onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-medium"
+          className="btn btn-ghost"
         >
           Clear
         </button>
@@ -121,7 +121,7 @@ export default function HashGenerator() {
       </div>
 
       <div className="p-4 rounded-lg bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-sm">
-        ℹ️ This tool provides simple hash functions for demonstration. For production cryptographic hashing (MD5, SHA256, etc.), please use dedicated crypto libraries.
+        This tool provides simple hash functions for demonstration. For production cryptographic hashing (MD5, SHA256, etc.), please use dedicated crypto libraries.
       </div>
     </div>
   );

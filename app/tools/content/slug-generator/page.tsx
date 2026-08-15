@@ -35,29 +35,31 @@ export default function SlugGenerator() {
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Slug Generator' }]} />
       <div>
-        <h1 className="text-4xl font-bold mb-2">Slug Generator</h1>
-        <p className="text-gray-600 dark:text-gray-400">Generate URL-friendly slugs from text.</p>
+        <h1 className="headline text-[2rem] mb-2.5">Slug Generator</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Turn a headline into a clean URL segment, lowercased and hyphenated.
+        </p>
       </div>
 
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter text to convert to slug..."
-        className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+        className="field h-40"
       />
 
       {slug && (
-        <div className="p-4 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">Generated Slug:</p>
+        <div className="p-4 rounded-lg bg-surface-sunken border border-line">
+          <p className="text-ink-muted text-sm mb-2">Generated Slug:</p>
           <div className="relative">
-            <code className="block font-mono text-lg text-gray-900 dark:text-white break-all mb-3">{slug}</code>
+            <code className="block font-mono text-lg text-ink break-all mb-3">{slug}</code>
             <button
               onClick={handleCopy}
-              className={`text-sm px-3 py-1 rounded transition ${
-                copied ? 'bg-green-600 text-white' : 'bg-blue-600 text-white hover:bg-blue-700'
+              className={`btn btn-sm ${
+                copied ? 'bg-green-600 text-white' : 'btn-secondary'
               }`}
             >
-              {copied ? '✓ Copied!' : 'Copy'}
+              {copied ? 'Copied' : 'Copy'}
             </button>
           </div>
         </div>
@@ -65,7 +67,7 @@ export default function SlugGenerator() {
 
       <button
         onClick={handleGenerate}
-        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+        className="btn btn-primary"
       >
         Generate Slug
       </button>

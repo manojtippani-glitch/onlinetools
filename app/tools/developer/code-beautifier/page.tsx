@@ -157,9 +157,9 @@ export default function CodeBeautifier() {
       <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Code Beautifier' }]} />
 
       <div>
-        <h1 className="text-4xl font-bold mb-2">Code Beautifier</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Format and beautify your code with proper indentation. Supports JavaScript, JSON, HTML, and XML.
+        <h1 className="headline text-[2rem] mb-2.5">Code Beautifier</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Re-indent minified JavaScript, JSON, HTML, or XML. Pick a language and an indent width.
         </p>
       </div>
 
@@ -167,40 +167,36 @@ export default function CodeBeautifier() {
         {/* Input Section */}
         <div className="space-y-3">
           <div className="flex items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Input Code</label>
+            <label className="text-[13px] font-medium">Input Code</label>
           </div>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your code here..."
-            className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            placeholder="Paste code"
+            className="field h-80"
           />
         </div>
 
         {/* Output Section */}
         <div className="space-y-3">
           <div className="flex justify-between items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Output Code</label>
+            <label className="text-[13px] font-medium">Output Code</label>
             {output ? (
               <button
                 onClick={handleCopy}
-                className={`text-sm px-3 py-1 rounded transition ${
-                  copied
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                className="btn btn-secondary btn-sm"
               >
-                {copied ? '✓ Copied!' : 'Copy'}
+                {copied ? 'Copied' : 'Copy'}
               </button>
             ) : (
-              <div className="w-12 h-9" />
+              <div className="h-[30px]" />
             )}
           </div>
-          <div className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
+          <div className="panel-sunken w-full h-80 p-4 font-mono text-[13px] leading-relaxed overflow-auto">
             {output ? (
-              <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
+              <pre className="text-ink">{output}</pre>
             ) : (
-              <p className="text-gray-500">Output will appear here...</p>
+              <p className="text-ink-subtle">Output appears here</p>
             )}
           </div>
         </div>
@@ -208,13 +204,13 @@ export default function CodeBeautifier() {
 
       {/* Settings */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+        <div className="panel p-4">
           <label className="flex items-center gap-2">
-            <span className="font-medium text-gray-900 dark:text-white">Language:</span>
+            <span className="text-[13px] font-medium">Language:</span>
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="px-3 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+              className="select"
             >
               <option value="javascript">JavaScript</option>
               <option value="json">JSON</option>
@@ -223,13 +219,13 @@ export default function CodeBeautifier() {
             </select>
           </label>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+        <div className="panel p-4">
           <label className="flex items-center gap-2">
-            <span className="font-medium text-gray-900 dark:text-white">Indent Size:</span>
+            <span className="text-[13px] font-medium">Indent Size:</span>
             <select
               value={indentSize}
               onChange={(e) => setIndentSize(Number(e.target.value))}
-              className="px-3 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+              className="select"
             >
               <option value={2}>2 spaces</option>
               <option value={4}>4 spaces</option>
@@ -241,7 +237,7 @@ export default function CodeBeautifier() {
 
       {/* Error/Status Message */}
       {error && (
-        <div className="p-4 rounded-lg bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100">
+        <div className="panel p-4 text-[13px] text-red-700 dark:text-red-300 border-red-300 dark:border-red-900">
           {error}
         </div>
       )}
@@ -250,13 +246,13 @@ export default function CodeBeautifier() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={handleBeautify}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="btn btn-primary"
         >
           Beautify
         </button>
         <button
           onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-medium"
+          className="btn btn-ghost"
         >
           Clear
         </button>
@@ -268,14 +264,14 @@ export default function CodeBeautifier() {
       </div>
 
       {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-8 border-t border-line">
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">✨ Multiple Languages</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">JavaScript, JSON, HTML, and XML</p>
+          <h3 className="text-[14px] font-medium mb-2">Multiple languages</h3>
+          <p className="text-sm text-ink-muted">JavaScript, JSON, HTML, and XML</p>
         </div>
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">🎯 Custom Indentation</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">2, 4, or 8 space indentation</p>
+          <h3 className="text-[14px] font-medium mb-2">Custom indentation</h3>
+          <p className="text-sm text-ink-muted">2, 4, or 8 space indentation</p>
         </div>
       </div>
     </div>

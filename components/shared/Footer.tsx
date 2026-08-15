@@ -1,53 +1,75 @@
-export default function Footer() {
-  const tools = [
-    { name: 'JSON Formatter', href: '/tools/developer/json-formatter' },
-    { name: 'Base64 Encoder', href: '/tools/developer/base64-encoder' },
-    { name: 'URL Encoder', href: '/tools/developer/url-encoder' },
-    { name: 'Code Beautifier', href: '/tools/developer/code-beautifier' },
-    { name: 'Word Counter', href: '/tools/content/word-counter' },
-    { name: 'Case Converter', href: '/tools/content/case-converter' },
-  ];
+import Link from 'next/link';
 
+const COLUMNS = [
+  {
+    heading: 'Developer',
+    links: [
+      { name: 'JSON Formatter', href: '/tools/developer/json-formatter' },
+      { name: 'Base64', href: '/tools/developer/base64-encoder' },
+      { name: 'URL Encoder', href: '/tools/developer/url-encoder' },
+      { name: 'Regex Tester', href: '/tools/developer/regex-tester' },
+    ],
+  },
+  {
+    heading: 'Text',
+    links: [
+      { name: 'Word Counter', href: '/tools/content/word-counter' },
+      { name: 'Case Converter', href: '/tools/content/case-converter' },
+      { name: 'Slug Generator', href: '/tools/content/slug-generator' },
+      { name: 'Markdown', href: '/tools/content/markdown-editor' },
+    ],
+  },
+  {
+    heading: 'Image',
+    links: [
+      { name: 'QR Code', href: '/tools/image/qr-code-generator' },
+      { name: 'Color Converter', href: '/tools/image/color-converter' },
+      { name: 'Palette', href: '/tools/image/color-palette' },
+      { name: 'Compressor', href: '/tools/image/image-compressor' },
+    ],
+  },
+  {
+    heading: 'Convert',
+    links: [
+      { name: 'JSON to CSV', href: '/tools/converter/json-to-csv' },
+      { name: 'Units', href: '/tools/converter/unit-converter' },
+      { name: 'Temperature', href: '/tools/converter/temperature-converter' },
+      { name: 'Passwords', href: '/tools/converter/password-generator' },
+    ],
+  },
+];
+
+export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-400 text-sm mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-white font-bold mb-4">Developer</h3>
-            <ul className="space-y-2">
-              <li><a href="/tools/developer/json-formatter" className="hover:text-white transition">JSON Formatter</a></li>
-              <li><a href="/tools/developer/base64-encoder" className="hover:text-white transition">Base64 Encoder</a></li>
-              <li><a href="/tools/developer/url-encoder" className="hover:text-white transition">URL Encoder</a></li>
-              <li><a href="/tools/developer/code-beautifier" className="hover:text-white transition">Code Beautifier</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-bold mb-4">Content</h3>
-            <ul className="space-y-2">
-              <li><a href="/tools/content/word-counter" className="hover:text-white transition">Word Counter</a></li>
-              <li><a href="/tools/content/case-converter" className="hover:text-white transition">Case Converter</a></li>
-              <li><a href="/tools/content/slug-generator" className="hover:text-white transition">Slug Generator</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-bold mb-4">Image</h3>
-            <ul className="space-y-2">
-              <li><a href="/tools/image/qr-code-generator" className="hover:text-white transition">QR Code</a></li>
-              <li><a href="/tools/image/color-converter" className="hover:text-white transition">Color Converter</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition">Privacy</a></li>
-              <li><a href="#" className="hover:text-white transition">Terms</a></li>
-              <li><a href="#" className="hover:text-white transition">Contact</a></li>
-            </ul>
-          </div>
+    <footer className="border-t border-line mt-24">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 mb-14">
+          {COLUMNS.map((col) => (
+            <div key={col.heading}>
+              <h3 className="eyebrow mb-4">{col.heading}</h3>
+              <ul className="space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[13px] text-ink-muted hover:text-ink transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-500">© 2026 OnlineTools. All tools are 100% free and client-side processed.</p>
+        <div className="hairline pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="text-[13px] text-ink-subtle">
+            Every tool runs locally in your browser. Nothing is uploaded.
+          </p>
+          <p className="font-mono text-[11px] text-ink-subtle">
+            © {new Date().getFullYear()} OnlineTools
+          </p>
         </div>
       </div>
     </footer>

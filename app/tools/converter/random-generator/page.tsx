@@ -23,14 +23,19 @@ export default function RandomGenerator() {
   return (
     <div className="space-y-6">
       <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Random Generator' }]} />
-      <div><h1 className="text-4xl font-bold mb-2">Random Generator</h1></div>
+      <div>
+        <h1 className="headline text-[2rem] mb-2.5">Random Generator</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Random numbers, strings, and throwaway IDs for testing and seed data.
+        </p>
+      </div>
       <div className="space-y-4">
-        <select value={type} onChange={(e) => setType(e.target.value)} className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <select value={type} onChange={(e) => setType(e.target.value)} className="w-full p-3 rounded-lg border border-line bg-surface">
           <option value="number">Random Number</option>
           <option value="string">Random String</option>
         </select>
-        <button onClick={generate} className="w-full px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button>
-        {result && <div className="p-4 rounded-lg bg-gray-50 dark:bg-gray-900"><p className="font-mono text-lg">{result}</p></div>}
+        <button onClick={generate} className="btn btn-primary w-full">Generate</button>
+        {result && <div className="p-4 rounded-lg bg-surface-sunken"><p className="font-mono text-lg">{result}</p></div>}
       </div>
       <AdContainer slot="1818181822" format="horizontal" />
     </div>

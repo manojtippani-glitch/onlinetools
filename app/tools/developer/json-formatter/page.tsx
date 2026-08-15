@@ -205,9 +205,9 @@ export default function JsonFormatter() {
       <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'JSON Formatter' }]} />
 
       <div>
-        <h1 className="text-4xl font-bold mb-2">JSON Formatter & Validator</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Format, validate, and minify JSON instantly. No server uploads, 100% client-side processing.
+        <h1 className="headline text-[2rem] mb-2.5">JSON Formatter</h1>
+        <p className="text-ink-muted max-w-2xl">
+          Paste JSON to re-indent it, minify it, or find the line and column where it breaks.
         </p>
       </div>
 
@@ -215,10 +215,10 @@ export default function JsonFormatter() {
         {/* Input Section */}
         <div className="space-y-3">
           <div className="flex justify-between items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Input JSON</label>
+            <label className="text-[13px] font-medium">Input JSON</label>
             <button
               onClick={() => setInput(sampleJSON)}
-              className="text-sm px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+              className="btn btn-secondary btn-sm"
             >
               Load Sample
             </button>
@@ -226,48 +226,44 @@ export default function JsonFormatter() {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your JSON here..."
-            className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            placeholder="Paste JSON"
+            className="field h-80"
           />
         </div>
 
         {/* Output Section */}
         <div className="space-y-3">
           <div className="flex justify-between items-center h-9">
-            <label className="font-semibold text-gray-900 dark:text-white">Output JSON</label>
+            <label className="text-[13px] font-medium">Output JSON</label>
             {output ? (
               <button
                 onClick={handleCopy}
-                className={`text-sm px-3 py-1 rounded transition ${
-                  copied
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                className="btn btn-secondary btn-sm"
               >
-                {copied ? '✓ Copied!' : 'Copy'}
+                {copied ? 'Copied' : 'Copy'}
               </button>
             ) : (
-              <div className="w-12 h-9" />
+              <div className="h-[30px]" />
             )}
           </div>
-          <div className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
+          <div className="panel-sunken w-full h-80 p-4 font-mono text-[13px] leading-relaxed overflow-auto">
             {output ? (
-              <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
+              <pre className="text-ink">{output}</pre>
             ) : (
-              <p className="text-gray-500">Output will appear here...</p>
+              <p className="text-ink-subtle">Output appears here</p>
             )}
           </div>
         </div>
       </div>
 
       {/* Settings */}
-      <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+      <div className="panel p-4">
         <label className="flex items-center gap-2">
-          <span className="font-medium text-gray-900 dark:text-white">Indent Size:</span>
+          <span className="text-[13px] font-medium">Indent Size:</span>
           <select
             value={indentSize}
             onChange={(e) => setIndentSize(Number(e.target.value))}
-            className="px-3 py-1 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+            className="select"
           >
             <option value={2}>2 spaces</option>
             <option value={4}>4 spaces</option>
@@ -279,7 +275,7 @@ export default function JsonFormatter() {
 
       {/* Error/Status Message */}
       {error && (
-        <div className={`p-4 rounded-lg ${error.startsWith('✓') ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100' : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100'}`}>
+        <div className={`p-4 rounded-lg ${error.startsWith('✓') ? 'text-emerald-700 dark:text-emerald-400' : 'text-red-700 dark:text-red-400'}`}>
           {error}
         </div>
       )}
@@ -288,25 +284,25 @@ export default function JsonFormatter() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={handleFormat}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="btn btn-primary"
         >
           Format
         </button>
         <button
           onClick={handleMinify}
-          className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition font-medium"
+          className="btn btn-secondary"
         >
           Minify
         </button>
         <button
           onClick={handleValidate}
-          className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium"
+          className="btn btn-secondary"
         >
           Validate
         </button>
         <button
           onClick={handleClear}
-          className="px-6 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition font-medium"
+          className="btn btn-ghost"
         >
           Clear
         </button>
@@ -318,18 +314,18 @@ export default function JsonFormatter() {
       </div>
 
       {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-line">
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">✨ Format</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Pretty-print JSON with custom indentation</p>
+          <h3 className="text-[14px] font-medium mb-2">Format</h3>
+          <p className="text-sm text-ink-muted">Pretty-print JSON with custom indentation</p>
         </div>
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">🔍 Validate</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Check if your JSON is valid</p>
+          <h3 className="text-[14px] font-medium mb-2">Validate</h3>
+          <p className="text-sm text-ink-muted">Check if your JSON is valid</p>
         </div>
         <div>
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2">📦 Minify</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Compress JSON to smallest size</p>
+          <h3 className="text-[14px] font-medium mb-2">Minify</h3>
+          <p className="text-sm text-ink-muted">Compress JSON to smallest size</p>
         </div>
       </div>
     </div>
