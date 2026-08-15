@@ -8,7 +8,7 @@ export default function MarkdownEditor() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Markdown Editor' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Markdown Editor' }]} />
       <div>
         <h1 className="text-4xl font-bold mb-2">Markdown Editor</h1>
         <p className="text-gray-600 dark:text-gray-400">Live markdown preview editor.</p>

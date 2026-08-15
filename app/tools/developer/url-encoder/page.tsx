@@ -98,7 +98,7 @@ export default function UrlEncoder() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools' }, { label: 'URL Encoder' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'URL Encoder' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">URL Encoder/Decoder</h1>

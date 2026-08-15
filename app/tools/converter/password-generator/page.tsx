@@ -25,7 +25,7 @@ export default function PasswordGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools' }, { label: 'Password Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Password Generator' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Password Generator</h1></div>
       <div className="space-y-4">
         <div>

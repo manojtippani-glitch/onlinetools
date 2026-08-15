@@ -13,7 +13,7 @@ export default function ColorConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools' }, { label: 'Color Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Color Converter' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Color Converter</h1></div>
       <div className="space-y-4">
         <input type="color" value={hex} onChange={(e) => setHex(e.target.value)} className="w-full h-20 rounded-lg" />

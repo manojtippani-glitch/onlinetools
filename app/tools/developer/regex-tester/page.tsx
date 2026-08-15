@@ -57,7 +57,7 @@ export default function RegexTester() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools' }, { label: 'Regex Tester' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Regex Tester' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">Regex Tester</h1>

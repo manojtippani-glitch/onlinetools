@@ -201,7 +201,7 @@ export default function JsonFormatter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools' }, { label: 'JSON Formatter' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'JSON Formatter' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">JSON Formatter & Validator</h1>

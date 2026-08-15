@@ -33,7 +33,7 @@ export default function SlugGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Slug Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Slug Generator' }]} />
       <div>
         <h1 className="text-4xl font-bold mb-2">Slug Generator</h1>
         <p className="text-gray-600 dark:text-gray-400">Generate URL-friendly slugs from text.</p>

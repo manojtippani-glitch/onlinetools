@@ -6,7 +6,7 @@ import AdContainer from '@/components/shared/AdContainer';
 export default function QrCodeDecoder() {
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools' }, { label: 'QR Code Decoder' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'QR Code Decoder' }]} />
       <div><h1 className="text-4xl font-bold mb-2">QR Code Decoder</h1></div>
       <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
         <p className="text-gray-600 dark:text-gray-400">Upload QR code image to decode</p>

@@ -27,8 +27,11 @@ export default function CodeBeautifier() {
       }
     }
 
-    if (langParam && ['javascript', 'json', 'html', 'xml'].includes(langParam)) {
-      setLanguage(langParam);
+    if (langParam) {
+      const lang = langParam.toLowerCase();
+      if (['javascript', 'json', 'html', 'xml'].includes(lang)) {
+        setLanguage(lang);
+      }
     }
   }, [searchParams]);
 
@@ -150,7 +153,7 @@ export default function CodeBeautifier() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools' }, { label: 'Code Beautifier' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Code Beautifier' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">Code Beautifier</h1>

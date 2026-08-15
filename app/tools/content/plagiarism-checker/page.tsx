@@ -8,7 +8,7 @@ export default function PlagiarismChecker() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Text Duplicate Checker' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Text Duplicate Checker' }]} />
       <div>
         <h1 className="text-4xl font-bold mb-2">Text Duplicate Checker</h1>
         <p className="text-gray-600 dark:text-gray-400">Check for duplicate text and phrases.</p>

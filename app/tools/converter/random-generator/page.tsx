@@ -22,7 +22,7 @@ export default function RandomGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools' }, { label: 'Random Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Random Generator' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Random Generator</h1></div>
       <div className="space-y-4">
         <select value={type} onChange={(e) => setType(e.target.value)} className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800">

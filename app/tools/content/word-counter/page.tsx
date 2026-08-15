@@ -43,7 +43,7 @@ export default function WordCounter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Word Counter' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Word Counter' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">Word Counter</h1>

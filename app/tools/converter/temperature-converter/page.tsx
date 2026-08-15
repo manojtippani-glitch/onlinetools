@@ -9,7 +9,7 @@ export default function TemperatureConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools' }, { label: 'Temperature Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Temperature Converter' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Temperature Converter</h1></div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div><label className="block mb-2 font-medium">Celsius</label><input type="number" value={celsius} onChange={(e) => setCelsius(e.target.value)} placeholder="Enter °C..." className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800" /></div>

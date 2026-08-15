@@ -9,7 +9,7 @@ export default function UnitConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools' }, { label: 'Unit Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Unit Converter' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Unit Converter</h1></div>
       <div className="space-y-4">
         <input type="number" value={value} onChange={(e) => setValue(e.target.value)} placeholder="Enter value..." className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800" />

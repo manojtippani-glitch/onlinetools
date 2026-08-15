@@ -104,7 +104,7 @@ export default function XmlFormatter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools' }, { label: 'XML Formatter' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'XML Formatter' }]} />
 
       <div>
         <h1 className="text-4xl font-bold mb-2">XML Formatter</h1>

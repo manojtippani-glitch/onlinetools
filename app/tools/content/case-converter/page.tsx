@@ -25,7 +25,7 @@ export default function CaseConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Case Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Case Converter' }]} />
       <div>
         <h1 className="text-4xl font-bold mb-2">Case Converter</h1>
         <p className="text-gray-600 dark:text-gray-400">Convert text between different cases instantly.</p>

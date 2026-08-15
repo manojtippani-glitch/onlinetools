@@ -8,7 +8,7 @@ export default function ColorPalette() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools' }, { label: 'Color Palette' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Color Palette' }]} />
       <div><h1 className="text-4xl font-bold mb-2">Color Palette Generator</h1></div>
       <div className="grid grid-cols-5 gap-3">
         {colors.map((color) => (

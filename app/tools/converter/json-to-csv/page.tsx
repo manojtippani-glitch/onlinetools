@@ -9,7 +9,7 @@ export default function JsonToCsv() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools' }, { label: 'JSON to CSV' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'JSON to CSV' }]} />
       <div><h1 className="text-4xl font-bold mb-2">JSON to CSV Converter</h1></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste JSON..." className="h-64 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800" />

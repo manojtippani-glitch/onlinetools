@@ -26,7 +26,7 @@ export default function MetaTagGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools' }, { label: 'Meta Tag Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Meta Tag Generator' }]} />
       <div>
         <h1 className="text-4xl font-bold mb-2">Meta Tag Generator</h1>
         <p className="text-gray-600 dark:text-gray-400">Generate SEO meta tags easily.</p>
