@@ -9,17 +9,6 @@ export default function Header() {
           <span className="font-bold text-xl text-gray-900 dark:text-white">OnlineTools</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
-            Home
-          </Link>
-        </nav>
-
-        <div className="md:hidden">
-          <Link href="/" className="text-gray-700 dark:text-gray-300 text-sm font-medium">
-            Tools
-          </Link>
-        </div>
       </div>
     </header>
   );
