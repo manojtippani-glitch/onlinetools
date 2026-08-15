@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 export const revalidate = 0;
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
