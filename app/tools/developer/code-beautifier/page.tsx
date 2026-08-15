@@ -1,16 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 
 export default function CodeBeautifier() {
+  const searchParams = useSearchParams();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
   const [indentSize, setIndentSize] = useState(2);
   const [language, setLanguage] = useState('javascript');
+
+  useEffect(() => {
+    const inputParam = searchParams.get('input');
+    const langParam = searchParams.get('language');
+
+    if (inputParam) {
+      try {
+        const decoded = decodeURIComponent(inputParam);
+        setInput(decoded);
+      } catch (e) {
+        // Ignore decoding errors
+      }
+    }
+
+    if (langParam && ['javascript', 'json', 'html', 'xml'].includes(langParam)) {
+      setLanguage(langParam);
+    }
+  }, [searchParams]);
 
   const beautifyCode = (code: string, lang: string, indent: number): string => {
     let result = code;
