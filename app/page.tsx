@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import AdContainer from '@/components/shared/AdContainer';
 
@@ -46,8 +47,16 @@ const CATEGORIES = [
 ];
 
 export default function Home() {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
+
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setCategory(categoryParam);
+    }
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     return TOOLS.filter(tool => {

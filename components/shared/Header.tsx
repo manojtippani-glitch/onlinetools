@@ -13,18 +13,6 @@ export default function Header() {
           <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
             Home
           </Link>
-          <Link href="/?category=developer" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
-            Developer
-          </Link>
-          <Link href="/?category=content" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
-            Content
-          </Link>
-          <Link href="/?category=image" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
-            Image
-          </Link>
-          <Link href="/?category=converter" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition">
-            Converter
-          </Link>
         </nav>
 
         <div className="md:hidden">
