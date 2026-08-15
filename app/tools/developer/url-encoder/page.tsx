@@ -1,14 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 
 export default function UrlEncoder() {
+  const searchParams = useSearchParams();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const inputParam = searchParams.get('input');
+    if (inputParam) {
+      try {
+        const decoded = decodeURIComponent(inputParam);
+        setInput(decoded);
+      } catch (e) {
+        // Ignore decoding errors
+      }
+    }
+  }, [searchParams]);
 
   const handleEncode = () => {
     setError('');

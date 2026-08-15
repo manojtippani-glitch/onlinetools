@@ -1,11 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 
 export default function WordCounter() {
+  const searchParams = useSearchParams();
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    const inputParam = searchParams.get('input');
+    if (inputParam) {
+      try {
+        const decoded = decodeURIComponent(inputParam);
+        setText(decoded);
+      } catch (e) {
+        // Ignore decoding errors
+      }
+    }
+  }, [searchParams]);
 
   const countStats = (str: string) => {
     const chars = str.length;
