@@ -4,6 +4,8 @@ import './globals.css';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 
+export const revalidate = 0;
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
