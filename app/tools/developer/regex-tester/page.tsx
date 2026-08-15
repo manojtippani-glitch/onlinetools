@@ -117,12 +117,12 @@ export default function RegexTester() {
 
         {/* Output */}
         <div>
-          <label className="font-semibold text-gray-900 dark:text-white mb-2 block">Results</label>
-          <div className="relative">
-            {output && (
+          <div className="flex justify-between items-center mb-2 h-9">
+            <label className="font-semibold text-gray-900 dark:text-white block">Results</label>
+            {output ? (
               <button
                 onClick={handleCopy}
-                className={`absolute top-3 right-3 z-10 text-sm px-3 py-1 rounded transition ${
+                className={`text-sm px-3 py-1 rounded transition ${
                   copied
                     ? 'bg-green-600 text-white hover:bg-green-700'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -130,14 +130,16 @@ export default function RegexTester() {
               >
                 {copied ? '✓ Copied!' : 'Copy'}
               </button>
+            ) : (
+              <div className="w-12 h-9" />
             )}
-            <div className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
-              {output ? (
-                <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
-              ) : (
-                <p className="text-gray-500">Results will appear here...</p>
-              )}
-            </div>
+          </div>
+          <div className="w-full h-40 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
+            {output ? (
+              <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
+            ) : (
+              <p className="text-gray-500">Results will appear here...</p>
+            )}
           </div>
         </div>
       </div>

@@ -199,7 +199,7 @@ export default function JsonFormatter() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input Section */}
         <div className="space-y-3">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center h-9">
             <label className="font-semibold text-gray-900 dark:text-white">Input JSON</label>
             <button
               onClick={() => setInput(sampleJSON)}
@@ -218,12 +218,12 @@ export default function JsonFormatter() {
 
         {/* Output Section */}
         <div className="space-y-3">
-          <label className="font-semibold text-gray-900 dark:text-white">Output JSON</label>
-          <div className="relative">
-            {output && (
+          <div className="flex justify-between items-center h-9">
+            <label className="font-semibold text-gray-900 dark:text-white">Output JSON</label>
+            {output ? (
               <button
                 onClick={handleCopy}
-                className={`absolute top-3 right-3 z-10 text-sm px-3 py-1 rounded transition ${
+                className={`text-sm px-3 py-1 rounded transition ${
                   copied
                     ? 'bg-green-600 text-white hover:bg-green-700'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -231,14 +231,16 @@ export default function JsonFormatter() {
               >
                 {copied ? '✓ Copied!' : 'Copy'}
               </button>
+            ) : (
+              <div className="w-12 h-9" />
             )}
-            <div className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
-              {output ? (
-                <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
-              ) : (
-                <p className="text-gray-500">Output will appear here...</p>
-              )}
-            </div>
+          </div>
+          <div className="w-full h-80 p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 font-mono text-sm overflow-auto">
+            {output ? (
+              <pre className="text-gray-900 dark:text-gray-100">{output}</pre>
+            ) : (
+              <p className="text-gray-500">Output will appear here...</p>
+            )}
           </div>
         </div>
       </div>
