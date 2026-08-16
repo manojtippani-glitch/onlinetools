@@ -7,8 +7,6 @@ import CommandPalette from '@/components/shared/CommandPalette';
 import { Analytics } from '@vercel/analytics/next';
 import { TOOLS } from '@/lib/tools';
 
-export const revalidate = 0;
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
