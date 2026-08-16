@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import CommandPalette from '@/components/shared/CommandPalette';
+import ServiceWorker from '@/components/shared/ServiceWorker';
 import { Analytics } from '@vercel/analytics/next';
 import { TOOLS } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
@@ -89,6 +90,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CommandPalette />
+        <ServiceWorker />
         <Analytics />
       </body>
     </html>
