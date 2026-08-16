@@ -73,8 +73,3 @@ export function relatedTools(id: string, count = 4): Tool[] {
 
   return [...siblings, ...others].slice(0, count);
 }
-
-/** Absolute origin, used for canonical URLs and the sitemap. */
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
-  'https://onlinetools.vercel.app';

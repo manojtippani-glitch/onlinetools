@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getToolMetadata } from './toolsMetadata';
-import { getTool, toolHref, SITE_URL } from './tools';
+import { getTool, toolHref } from './tools';
+import { SITE_URL } from './site';
 
 /**
  * Metadata for a tool page, including the canonical URL.

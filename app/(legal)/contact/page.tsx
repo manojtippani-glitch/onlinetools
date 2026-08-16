@@ -7,13 +7,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * TODO: replace with the address you want published.
+ * Ways for people to reach you. Set either, or both.
  *
- * Left as a placeholder deliberately — putting a personal inbox on a public
- * page invites scrapers, so a dedicated or forwarding address is usually the
- * better choice. Setting this turns the notice below into a mailto link.
+ * CONTACT_EMAIL is deliberately empty: putting a personal inbox on a public
+ * page invites scrapers, so use a dedicated address or an alias. Until one
+ * of these is set, the page explains that in visitor-facing terms rather
+ * than showing a dead mailto.
  */
 export const CONTACT_EMAIL = '';
+export const ISSUES_URL = '';
 
 export default function Contact() {
   return (
@@ -27,17 +29,26 @@ export default function Contact() {
       </p>
 
       <h2>Getting in touch</h2>
-      {CONTACT_EMAIL ? (
+      {CONTACT_EMAIL && (
         <p>
-          Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. It is
-          a small operation, so a reply may take a few days.
+          Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. This
+          is a small operation, so a reply may take a few days.
         </p>
-      ) : (
-        <p className="panel p-4 !mt-4 text-[13px] text-ink-muted">
-          A contact address has not been published yet. Set{' '}
-          <code>CONTACT_EMAIL</code> in{' '}
-          <code>app/(legal)/contact/page.tsx</code> to turn this into a real
-          mailto link and reveal the footer link.
+      )}
+      {ISSUES_URL && (
+        <p>
+          Bugs and tool requests can also go straight to{' '}
+          <a href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
+            the issue tracker
+          </a>
+          , which is usually the faster route.
+        </p>
+      )}
+      {!CONTACT_EMAIL && !ISSUES_URL && (
+        <p>
+          A public contact address is being set up and will appear here
+          shortly. In the meantime, the notes below cover what is most useful
+          to include when it is ready.
         </p>
       )}
 

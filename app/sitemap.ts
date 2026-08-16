@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { TOOLS, toolHref, SITE_URL } from '@/lib/tools';
+import { TOOLS, toolHref } from '@/lib/tools';
+import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
