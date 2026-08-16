@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 type Scale = 'c' | 'f' | 'k';
 
@@ -102,6 +103,7 @@ export default function TemperatureConverter() {
       </div>
 
       <AdContainer slot="1818181821" format="horizontal" />
+    <RelatedTools current="temperature-converter" />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 const getLineAndColumn = (input: string, position: number): { line: number; column: number } => {
   let line = 1;
@@ -328,6 +329,7 @@ export default function JsonFormatter() {
           <p className="text-sm text-ink-muted">Compress JSON to smallest size</p>
         </div>
       </div>
+    <RelatedTools current="json-formatter" />
     </div>
   );
 }

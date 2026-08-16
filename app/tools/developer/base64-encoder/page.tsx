@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function Base64Encoder() {
   const [input, setInput] = useState('');
@@ -190,6 +191,7 @@ export default function Base64Encoder() {
           <p className="text-sm text-ink-muted">Automatically detect and convert</p>
         </div>
       </div>
+    <RelatedTools current="base64-encoder" />
     </div>
   );
 }

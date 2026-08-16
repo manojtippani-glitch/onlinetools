@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 // SubtleCrypto ships these four in every current browser. There is no
 // MD5 here on purpose: the platform doesn't provide it, and pulling in a
@@ -115,6 +116,7 @@ export default function HashGenerator() {
       </p>
 
       <AdContainer slot="6666666666" format="horizontal" />
+    <RelatedTools current="hash-generator" />
     </div>
   );
 }

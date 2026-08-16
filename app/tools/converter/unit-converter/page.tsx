@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 // Every unit is expressed as a multiple of the category's base unit
 // (metre, gram, litre), so conversion is one multiply and one divide.
@@ -169,6 +170,7 @@ export default function UnitConverter() {
       </div>
 
       <AdContainer slot="1818181820" format="horizontal" />
+    <RelatedTools current="unit-converter" />
     </div>
   );
 }

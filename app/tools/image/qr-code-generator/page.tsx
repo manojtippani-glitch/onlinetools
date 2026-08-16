@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import QRCode from 'qrcode';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 const SIZES = [256, 512, 1024];
 
@@ -140,6 +141,7 @@ export default function QrCodeGenerator() {
       )}
 
       <AdContainer slot="1515151515" format="horizontal" />
+    <RelatedTools current="qr-code-generator" />
     </div>
   );
 }

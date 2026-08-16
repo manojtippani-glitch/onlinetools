@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function XmlFormatter() {
   const searchParams = useSearchParams();
@@ -190,6 +191,7 @@ export default function XmlFormatter() {
       <div className="py-4">
         <AdContainer slot="8888888888" format="horizontal" />
       </div>
+    <RelatedTools current="xml-formatter" />
     </div>
   );
 }

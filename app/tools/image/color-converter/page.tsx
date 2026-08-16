@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 type Rgb = { r: number; g: number; b: number };
 type Hsl = { h: number; s: number; l: number };
@@ -218,6 +219,7 @@ export default function ColorConverter() {
       </div>
 
       <AdContainer slot="1616161616" format="horizontal" />
+    <RelatedTools current="color-converter" />
     </div>
   );
 }

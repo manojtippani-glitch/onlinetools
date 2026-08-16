@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 const HTML_ENTITIES: Record<string, string> = {
   '&': '&amp;',
@@ -146,6 +147,7 @@ export default function HtmlEncoder() {
       <div className="py-4">
         <AdContainer slot="7777777777" format="horizontal" />
       </div>
+    <RelatedTools current="html-encoder" />
     </div>
   );
 }

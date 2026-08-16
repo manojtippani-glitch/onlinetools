@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function UrlEncoder() {
   const searchParams = useSearchParams();
@@ -204,6 +205,7 @@ export default function UrlEncoder() {
           </ul>
         </div>
       </div>
+    <RelatedTools current="url-encoder" />
     </div>
   );
 }

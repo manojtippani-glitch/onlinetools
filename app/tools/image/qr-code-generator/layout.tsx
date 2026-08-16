@@ -1,17 +1,13 @@
-import { Metadata } from 'next';
-import { getToolMetadata } from '@/lib/toolsMetadata';
+import type { Metadata } from 'next';
+import { buildToolMetadata, ToolSchema } from '@/lib/toolPage';
 
-export const metadata: Metadata = (() => {
-  const toolMeta = getToolMetadata('qr-code-generator');
-  return {
-    title: toolMeta.title,
-    description: toolMeta.description,
-    keywords: toolMeta.keywords,
-    openGraph: { title: toolMeta.title, description: toolMeta.description, type: 'website' },
-    twitter: { card: 'summary_large_image', title: toolMeta.title, description: toolMeta.description },
-  };
-})();
+export const metadata: Metadata = buildToolMetadata('qr-code-generator');
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <ToolSchema id="qr-code-generator" />
+      {children}
+    </>
+  );
 }

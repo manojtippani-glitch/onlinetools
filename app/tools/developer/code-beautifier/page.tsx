@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function CodeBeautifier() {
   const searchParams = useSearchParams();
@@ -274,6 +275,7 @@ export default function CodeBeautifier() {
           <p className="text-sm text-ink-muted">2, 4, or 8 space indentation</p>
         </div>
       </div>
+    <RelatedTools current="code-beautifier" />
     </div>
   );
 }

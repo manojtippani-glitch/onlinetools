@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function WordCounter() {
   const searchParams = useSearchParams();
@@ -72,6 +73,7 @@ export default function WordCounter() {
       <div className="py-4">
         <AdContainer slot="9999999999" format="horizontal" />
       </div>
+    <RelatedTools current="word-counter" />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 type Result = {
   url: string;
@@ -299,6 +300,7 @@ export default function ImageCompressor() {
       )}
 
       <AdContainer slot="1717171718" format="horizontal" />
+    <RelatedTools current="image-compressor" />
     </div>
   );
 }

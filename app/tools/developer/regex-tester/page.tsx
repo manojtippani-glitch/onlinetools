@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function RegexTester() {
   const [pattern, setPattern] = useState('');
@@ -167,6 +168,7 @@ export default function RegexTester() {
       <div className="py-4">
         <AdContainer slot="5555555555" format="horizontal" />
       </div>
+    <RelatedTools current="regex-tester" />
     </div>
   );
 }

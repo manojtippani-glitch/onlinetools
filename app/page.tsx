@@ -5,47 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import AdContainer from '@/components/shared/AdContainer';
 import Icon from '@/components/shared/Icon';
-
-const TOOLS = [
-  // Developer
-  { id: 'json-formatter', name: 'JSON Formatter', category: 'developer', description: 'Pretty-print, minify, and catch syntax errors with a line number' },
-  { id: 'base64-encoder', name: 'Base64', category: 'developer', description: 'Round-trip text and Base64 in either direction' },
-  { id: 'url-encoder', name: 'URL Encoder', category: 'developer', description: 'Percent-encoding for query strings and path segments' },
-  { id: 'code-beautifier', name: 'Code Beautifier', category: 'developer', description: 'Re-indent JavaScript, JSON, HTML, and XML' },
-  { id: 'regex-tester', name: 'Regex Tester', category: 'developer', description: 'Match a pattern against sample text as you type' },
-  { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'SHA-1 through SHA-512, computed as you type' },
-  { id: 'html-encoder', name: 'HTML Entities', category: 'developer', description: 'Escape angle brackets, quotes, and ampersands' },
-  { id: 'xml-formatter', name: 'XML Formatter', category: 'developer', description: 'Indent nested XML and spot unclosed tags' },
-
-  // Text
-  { id: 'word-counter', name: 'Word Counter', category: 'content', description: 'Words, characters, and sentences, counted live' },
-  { id: 'case-converter', name: 'Case Converter', category: 'content', description: 'camelCase, snake_case, kebab-case, Title Case' },
-  { id: 'slug-generator', name: 'Slug Generator', category: 'content', description: 'Turn a headline into a clean URL segment' },
-  { id: 'markdown-editor', name: 'Markdown Editor', category: 'content', description: 'Write Markdown, watch the HTML update beside it' },
-  { id: 'meta-tag-generator', name: 'Meta Tags', category: 'content', description: 'Build the title, description, and OG tags for a page' },
-  { id: 'plagiarism-checker', name: 'Duplicate Text', category: 'content', description: 'Compare two passages and see what overlaps' },
-
-  // Image
-  { id: 'qr-code-generator', name: 'QR Code Generator', category: 'image', description: 'Encode a link or a note into a scannable code' },
-  { id: 'qr-code-decoder', name: 'QR Code Reader', category: 'image', description: 'Read the text back out of a QR image' },
-  { id: 'color-converter', name: 'Color Converter', category: 'image', description: 'HEX, RGB, and HSL side by side' },
-  { id: 'color-palette', name: 'Color Palette', category: 'image', description: 'Build a palette around one base color' },
-  { id: 'image-compressor', name: 'Image Compressor', category: 'image', description: 'Shrink JPG and PNG files before you ship them' },
-
-  // Convert
-  { id: 'json-to-csv', name: 'JSON to CSV', category: 'converter', description: 'Flatten an array of objects into spreadsheet rows' },
-  { id: 'unit-converter', name: 'Unit Converter', category: 'converter', description: 'Length, weight, and volume across metric and imperial' },
-  { id: 'temperature-converter', name: 'Temperature', category: 'converter', description: 'Celsius, Fahrenheit, and Kelvin' },
-  { id: 'password-generator', name: 'Password Generator', category: 'converter', description: 'Random strings with the character sets you pick' },
-  { id: 'random-generator', name: 'Random Values', category: 'converter', description: 'Numbers, strings, and throwaway IDs on demand' },
-];
-
-const CATEGORIES = [
-  { id: 'developer', name: 'Developer' },
-  { id: 'content', name: 'Text' },
-  { id: 'image', name: 'Image' },
-  { id: 'converter', name: 'Convert' },
-];
+import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -143,7 +103,7 @@ export default function Home() {
             {filtered.map((tool) => (
               <Link
                 key={tool.id}
-                href={`/tools/${tool.category}/${tool.id}`}
+                href={toolHref(tool)}
                 className="tool-card group"
               >
                 <span className="text-ink-subtle group-hover:text-accent transition-colors">

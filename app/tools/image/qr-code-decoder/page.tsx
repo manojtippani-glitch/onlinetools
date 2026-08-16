@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import jsQR from 'jsqr';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function QrCodeDecoder() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -161,6 +162,7 @@ export default function QrCodeDecoder() {
       )}
 
       <AdContainer slot="1717171719" format="horizontal" />
+    <RelatedTools current="qr-code-decoder" />
     </div>
   );
 }

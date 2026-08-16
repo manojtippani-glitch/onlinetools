@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
+import RelatedTools from '@/components/shared/RelatedTools';
 
 /**
  * Flatten nested objects into dotted keys so `{user:{name}}` becomes
@@ -218,6 +219,7 @@ export default function JsonToCsv() {
       </div>
 
       <AdContainer slot="1818181819" format="horizontal" />
+    <RelatedTools current="json-to-csv" />
     </div>
   );
 }
