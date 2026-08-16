@@ -9,25 +9,27 @@ import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
 
   useEffect(() => {
-    const categoryParam = searchParams.get('category');
-    if (categoryParam) setCategory(categoryParam);
+    const param = searchParams.get('category');
+    // Validated, so a stale or hand-edited value shows every tool rather
+    // than an unexplained empty grid.
+    if (param && CATEGORIES.some((c) => c.id === param)) setCategory(param);
   }, [searchParams]);
 
-  const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return TOOLS.filter((tool) => {
-      const matchesSearch =
-        !q ||
-        tool.name.toLowerCase().includes(q) ||
-        tool.description.toLowerCase().includes(q);
-      const matchesCategory = !category || tool.category === category;
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, category]);
+  // Searching lives in the palette. The hero field below opens it rather
+  // than filtering here, so there is one search behaviour rather than two
+  // that look the same and do different things.
+  const openPalette = () =>
+    window.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'k', metaKey: true, ctrlKey: true })
+    );
+
+  const filtered = useMemo(
+    () => TOOLS.filter((tool) => !category || tool.category === category),
+    [category]
+  );
 
   return (
     <div>
@@ -49,19 +51,20 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Search */}
-          <div className="mt-10 max-w-md relative">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-subtle pointer-events-none">
-              <Icon name="search" className="w-4 h-4" />
+          {/* The prominent way into the palette. A button rather than an
+              input, so it can't look like a field that swallows typing. */}
+          <button
+            onClick={openPalette}
+            className="mt-10 w-full max-w-md h-11 flex items-center gap-3 pl-3.5 pr-2 rounded-xl bg-surface border border-line text-left hover:border-line-strong transition-colors"
+          >
+            <Icon name="search" className="w-4 h-4 text-ink-subtle shrink-0" />
+            <span className="text-[14px] text-ink-subtle flex-1">
+              Search {TOOLS.length} tools
             </span>
-            <input
-              type="search"
-              placeholder="Search tools"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface border border-line text-[14px] placeholder:text-ink-subtle focus:outline-none focus:border-line-strong transition-colors"
-            />
-          </div>
+            <kbd className="hidden sm:flex items-center font-mono text-[10px] text-ink-subtle border border-line rounded px-1.5 py-1">
+              ⌘K
+            </kbd>
+          </button>
         </div>
       </section>
 
@@ -97,43 +100,23 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Grid */}
-        {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {filtered.map((tool) => (
-              <Link
-                key={tool.id}
-                href={toolHref(tool)}
-                className="tool-card group"
-              >
-                <span className="text-ink-subtle group-hover:text-accent transition-colors">
-                  <Icon name={tool.id} className="w-[18px] h-[18px]" />
-                </span>
-                <h2 className="text-[15px] font-medium tracking-tight mt-1">
-                  {tool.name}
-                </h2>
-                <p className="text-[13px] text-ink-muted leading-relaxed">
-                  {tool.description}
-                </p>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className="py-20 text-center">
-            <p className="text-ink-muted text-[14px]">
-              Nothing matches “{search}”.
-            </p>
-            <button
-              onClick={() => {
-                setSearch('');
-                setCategory('');
-              }}
-              className="btn btn-secondary btn-sm mt-4"
-            >
-              Clear filters
-            </button>
-          </div>
-        )}
+        {/* Grid. Every category has tools, so there is no empty state to
+            handle here — an unknown ?category= value falls back to all. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {filtered.map((tool) => (
+            <Link key={tool.id} href={toolHref(tool)} className="tool-card group">
+              <span className="text-ink-subtle group-hover:text-accent transition-colors">
+                <Icon name={tool.id} className="w-[18px] h-[18px]" />
+              </span>
+              <h2 className="text-[15px] font-medium tracking-tight mt-1">
+                {tool.name}
+              </h2>
+              <p className="text-[13px] text-ink-muted leading-relaxed">
+                {tool.description}
+              </p>
+            </Link>
+          ))}
+        </div>
 
         {/* Ad */}
         <div className="mt-16">
