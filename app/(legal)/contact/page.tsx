@@ -15,7 +15,7 @@ export const metadata: Metadata = {
  * of these is set, the page explains that in visitor-facing terms rather
  * than showing a dead mailto.
  */
-export const CONTACT_EMAIL = '';
+export const CONTACT_EMAIL = 'helponlinetools@gmail.com';
 export const ISSUES_URL =
   'https://github.com/manojtippani-glitch/onlinetools/issues';
 
@@ -41,7 +41,9 @@ export default function Contact() {
           makes sense once there is something for it to be additional to. */}
       {ISSUES_URL && (
         <p>
-          {CONTACT_EMAIL ? 'Either of those can also go straight to ' : 'All of it goes to '}
+          {CONTACT_EMAIL
+            ? 'Anything code-related can go straight to '
+            : 'All of it goes to '}
           <a href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
             the issue tracker
           </a>
