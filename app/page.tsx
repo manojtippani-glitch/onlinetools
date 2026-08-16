@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import AdContainer from '@/components/shared/AdContainer';
 import Icon from '@/components/shared/Icon';
+import SiteSchema from '@/components/shared/SiteSchema';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 
 export default function Home() {
@@ -31,8 +32,22 @@ export default function Home() {
     [category]
   );
 
+  // One section per category when unfiltered; a single unlabelled section
+  // once a category is picked, since the heading would just repeat the
+  // active filter chip.
+  const sections = useMemo(() => {
+    if (category) {
+      return [{ id: category, name: '', blurb: '', tools: filtered }];
+    }
+    return CATEGORIES.map((c) => ({
+      ...c,
+      tools: TOOLS.filter((t) => t.category === c.id),
+    }));
+  }, [category, filtered]);
+
   return (
     <div>
+      <SiteSchema />
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 grid-veil pointer-events-none" aria-hidden="true" />
@@ -100,23 +115,44 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Grid. Every category has tools, so there is no empty state to
-            handle here — an unknown ?category= value falls back to all. */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {filtered.map((tool) => (
-            <Link key={tool.id} href={toolHref(tool)} className="tool-card group">
-              <span className="text-ink-subtle group-hover:text-accent transition-colors">
-                <Icon name={tool.id} className="w-[18px] h-[18px]" />
-              </span>
-              <h2 className="text-[15px] font-medium tracking-tight mt-1">
-                {tool.name}
-              </h2>
-              <p className="text-[13px] text-ink-muted leading-relaxed">
-                {tool.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+        {/* Grouped into sections when showing everything. Thirty cards in
+            one undifferentiated grid gives the eye nothing to navigate by;
+            a single category is short enough to stay flat. */}
+        {sections.map((section) => (
+          <section key={section.id} className="mb-12 last:mb-0">
+            {!category && (
+              <div className="flex items-baseline gap-3 mb-4">
+                <h2 className="text-[15px] font-medium tracking-tight">
+                  {section.name}
+                </h2>
+                <span className="text-[13px] text-ink-muted">
+                  {section.blurb}
+                </span>
+                <Link
+                  href={`/tools/${section.id}`}
+                  className="ml-auto text-[13px] text-ink-muted hover:text-ink transition-colors shrink-0"
+                >
+                  View all
+                </Link>
+              </div>
+            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {section.tools.map((tool) => (
+                <Link key={tool.id} href={toolHref(tool)} className="tool-card group">
+                  <span className="text-ink-subtle group-hover:text-accent transition-colors">
+                    <Icon name={tool.id} className="w-[18px] h-[18px]" />
+                  </span>
+                  <h3 className="text-[15px] font-medium tracking-tight mt-1">
+                    {tool.name}
+                  </h3>
+                  <p className="text-[13px] text-ink-muted leading-relaxed">
+                    {tool.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
 
         {/* Ad */}
         <div className="mt-16">
