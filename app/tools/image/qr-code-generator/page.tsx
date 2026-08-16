@@ -64,7 +64,7 @@ export default function QrCodeGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'QR Code Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/tools/image' }, { label: 'QR Code Generator' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">QR Code Generator</h1>

@@ -66,7 +66,7 @@ export default function RandomGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Random Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/tools/converter' }, { label: 'Random Generator' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Random Generator</h1>

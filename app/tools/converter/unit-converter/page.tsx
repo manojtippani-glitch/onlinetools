@@ -90,7 +90,7 @@ export default function UnitConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Unit Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/tools/converter' }, { label: 'Unit Converter' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Unit Converter</h1>

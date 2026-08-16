@@ -149,7 +149,7 @@ export default function ImageCompressor() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Image Compressor' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/tools/image' }, { label: 'Image Compressor' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Image Compressor</h1>

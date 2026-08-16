@@ -85,7 +85,7 @@ export default function Base64Encoder() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Base64 Encoder' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/tools/developer' }, { label: 'Base64 Encoder' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Base64 Encoder and Decoder</h1>

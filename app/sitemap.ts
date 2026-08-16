@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { TOOLS, toolHref } from '@/lib/tools';
+import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    ...CATEGORIES.map((category) => ({
+      url: `${SITE_URL}/tools/${category.id}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    })),
     ...TOOLS.map((tool) => ({
       url: `${SITE_URL}${toolHref(tool)}`,
       lastModified: now,

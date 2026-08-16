@@ -107,7 +107,7 @@ export default function ColorConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Color Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/tools/image' }, { label: 'Color Converter' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Color Converter</h1>

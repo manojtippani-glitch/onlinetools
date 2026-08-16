@@ -118,7 +118,7 @@ export default function ColorPalette() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'Color Palette' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/tools/image' }, { label: 'Color Palette' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Color Palette Generator</h1>

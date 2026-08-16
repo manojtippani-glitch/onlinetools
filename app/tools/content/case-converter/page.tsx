@@ -26,7 +26,7 @@ export default function CaseConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Case Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/tools/content' }, { label: 'Case Converter' }]} />
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Case Converter</h1>
         <p className="text-ink-muted max-w-2xl">

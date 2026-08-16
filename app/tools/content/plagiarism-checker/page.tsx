@@ -80,7 +80,7 @@ export default function DuplicateTextChecker() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Duplicate Text' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/tools/content' }, { label: 'Duplicate Text' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Duplicate Text Checker</h1>

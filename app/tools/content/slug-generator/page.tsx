@@ -73,7 +73,7 @@ export default function SlugGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Slug Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/tools/content' }, { label: 'Slug Generator' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Slug Generator</h1>

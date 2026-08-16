@@ -63,7 +63,7 @@ export default function QrCodeDecoder() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Image Tools', href: '/?category=image' }, { label: 'QR Code Decoder' }]} />
+      <Breadcrumbs items={[{ label: 'Image Tools', href: '/tools/image' }, { label: 'QR Code Decoder' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">QR Code Reader</h1>

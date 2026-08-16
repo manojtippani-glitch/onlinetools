@@ -44,7 +44,7 @@ export default function TemperatureConverter() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'Temperature Converter' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/tools/converter' }, { label: 'Temperature Converter' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Temperature Converter</h1>

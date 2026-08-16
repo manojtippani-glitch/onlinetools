@@ -77,7 +77,7 @@ export default function HtmlEncoder() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'HTML Encoder' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/tools/developer' }, { label: 'HTML Encoder' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">HTML Entity Encoder</h1>

@@ -81,7 +81,7 @@ export default function MetaTagGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Content Tools', href: '/?category=content' }, { label: 'Meta Tag Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Content Tools', href: '/tools/content' }, { label: 'Meta Tag Generator' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Meta Tag Generator</h1>

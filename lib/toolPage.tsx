@@ -16,6 +16,13 @@ export function buildToolMetadata(id: string): Metadata {
   const path = tool ? toolHref(tool) : `/tools/${id}`;
   const url = `${SITE_URL}${path}`;
 
+  const image = {
+    url: `${SITE_URL}/og/${id}`,
+    width: 1200,
+    height: 630,
+    alt: meta.title,
+  };
+
   return {
     title: meta.title,
     description: meta.description,
@@ -27,11 +34,13 @@ export function buildToolMetadata(id: string): Metadata {
       url,
       type: 'website',
       siteName: 'OnlineTools',
+      images: [image],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
+      images: [image.url],
     },
   };
 }

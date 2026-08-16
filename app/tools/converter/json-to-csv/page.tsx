@@ -136,7 +136,7 @@ export default function JsonToCsv() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/?category=converter' }, { label: 'JSON to CSV' }]} />
+      <Breadcrumbs items={[{ label: 'Converter Tools', href: '/tools/converter' }, { label: 'JSON to CSV' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">JSON to CSV</h1>

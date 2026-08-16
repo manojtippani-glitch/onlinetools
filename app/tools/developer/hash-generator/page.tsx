@@ -68,7 +68,7 @@ export default function HashGenerator() {
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/?category=developer' }, { label: 'Hash Generator' }]} />
+      <Breadcrumbs items={[{ label: 'Developer Tools', href: '/tools/developer' }, { label: 'Hash Generator' }]} />
 
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Hash Generator</h1>
