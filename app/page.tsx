@@ -13,7 +13,7 @@ const TOOLS = [
   { id: 'url-encoder', name: 'URL Encoder', category: 'developer', description: 'Percent-encoding for query strings and path segments' },
   { id: 'code-beautifier', name: 'Code Beautifier', category: 'developer', description: 'Re-indent JavaScript, JSON, HTML, and XML' },
   { id: 'regex-tester', name: 'Regex Tester', category: 'developer', description: 'Match a pattern against sample text as you type' },
-  { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'Quick digests for cache keys and checksums' },
+  { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'SHA-1 through SHA-512, computed as you type' },
   { id: 'html-encoder', name: 'HTML Entities', category: 'developer', description: 'Escape angle brackets, quotes, and ampersands' },
   { id: 'xml-formatter', name: 'XML Formatter', category: 'developer', description: 'Indent nested XML and spot unclosed tags' },
 

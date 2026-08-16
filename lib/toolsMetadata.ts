@@ -44,10 +44,10 @@ export const TOOLS_METADATA = {
     keywords: 'regex tester, regular expression tester, test regex, regex matcher',
   },
   'hash-generator': {
-    title: 'Hash Generator',
+    title: 'SHA Hash Generator',
     description:
-      'Turn any string into a short digest for cache keys, fingerprints, and quick comparisons.',
-    keywords: 'hash generator, text hash, checksum, digest generator',
+      'SHA-1, SHA-256, SHA-384 and SHA-512 digests for any string, computed as you type.',
+    keywords: 'hash generator, sha256 generator, sha512, checksum, digest generator',
   },
   'html-encoder': {
     title: 'HTML Entity Encoder and Decoder',

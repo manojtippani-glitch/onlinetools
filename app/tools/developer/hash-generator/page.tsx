@@ -1,59 +1,68 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 
+// SubtleCrypto ships these four in every current browser. There is no
+// MD5 here on purpose: the platform doesn't provide it, and pulling in a
+// broken-by-design digest to fill a row on the page isn't worth it.
+const ALGORITHMS = ['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'] as const;
+
+function toHex(buffer: ArrayBuffer): string {
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
 export default function HashGenerator() {
+  const searchParams = useSearchParams();
   const [input, setInput] = useState('');
   const [results, setResults] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState('');
 
-  const generateHashes = async (text: string) => {
-    if (!text.trim()) return;
-
-    const hashes: Record<string, string> = {};
-
-    // Simple hash functions (for demo)
-    const djb2 = (str: string): string => {
-      let hash = 5381;
-      for (let i = 0; i < str.length; i++) {
-        hash = ((hash << 5) + hash) + str.charCodeAt(i);
+  useEffect(() => {
+    const inputParam = searchParams.get('input');
+    if (inputParam) {
+      try {
+        setInput(decodeURIComponent(inputParam));
+      } catch {
+        // Ignore malformed encoding
       }
-      return Math.abs(hash).toString(16);
+    }
+  }, [searchParams]);
+
+  // Digest on every keystroke — these are fast enough that a button would
+  // just be an extra click.
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!input) {
+      setResults({});
+      return;
+    }
+
+    const bytes = new TextEncoder().encode(input);
+
+    Promise.all(
+      ALGORITHMS.map(async (algo) => [
+        algo,
+        toHex(await crypto.subtle.digest(algo, bytes)),
+      ])
+    ).then((entries) => {
+      if (!cancelled) setResults(Object.fromEntries(entries));
+    });
+
+    return () => {
+      cancelled = true;
     };
+  }, [input]);
 
-    hashes['DJB2'] = djb2(text);
-
-    // MD5-like simple hash
-    const simpleHash = (str: string): string => {
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash;
-      }
-      return Math.abs(hash).toString(16).padStart(8, '0');
-    };
-
-    hashes['Simple Hash'] = simpleHash(text);
-
-    setResults(hashes);
-  };
-
-  const handleGenerate = () => {
-    generateHashes(input);
-  };
-
-  const handleCopy = (hash: string) => {
+  const handleCopy = (algo: string, hash: string) => {
     navigator.clipboard.writeText(hash);
-    setCopied(hash);
+    setCopied(algo);
     setTimeout(() => setCopied(''), 2000);
-  };
-
-  const handleClear = () => {
-    setInput('');
-    setResults({});
   };
 
   return (
@@ -63,66 +72,49 @@ export default function HashGenerator() {
       <div>
         <h1 className="headline text-[2rem] mb-2.5">Hash Generator</h1>
         <p className="text-ink-muted max-w-2xl">
-          Turn a string into a short digest for cache keys and quick comparisons.
+          SHA-1 through SHA-512 for any string, computed as you type.
         </p>
       </div>
 
       <div>
-        <label className="text-[13px] font-medium mb-2 block">Input Text</label>
+        <label className="text-[13px] font-medium mb-2 block">Input</label>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter text to hash..."
-          className="field h-40"
+          placeholder="Type or paste anything"
+          className="field h-32"
         />
       </div>
 
-      {Object.keys(results).length > 0 && (
-        <div className="space-y-3">
-          <h2 className="text-[13px] font-medium">Hash Results</h2>
-          {Object.entries(results).map(([type, hash]) => (
-            <div key={type} className="p-4 rounded-lg border border-line bg-surface-sunken">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[13px] font-medium">{type}:</span>
-                <button
-                  onClick={() => handleCopy(hash)}
-                  className={`btn btn-sm ${
-                    copied === hash
-                      ? 'bg-green-600 text-white'
-                      : 'btn-secondary'
-                  }`}
-                >
-                  {copied === hash ? '✓ Copied!' : 'Copy'}
-                </button>
-              </div>
-              <code className="block font-mono text-sm text-ink break-all">{hash}</code>
+      <div className="space-y-2">
+        {ALGORITHMS.map((algo) => (
+          <div key={algo} className="panel p-4">
+            <div className="flex items-center justify-between gap-4 mb-2">
+              <span className="eyebrow">{algo}</span>
+              <button
+                onClick={() => results[algo] && handleCopy(algo, results[algo])}
+                disabled={!results[algo]}
+                className="btn btn-secondary btn-sm"
+              >
+                {copied === algo ? 'Copied' : 'Copy'}
+              </button>
             </div>
-          ))}
-        </div>
-      )}
-
-      <div className="flex flex-wrap gap-3">
-        <button
-          onClick={handleGenerate}
-          className="btn btn-primary"
-        >
-          Generate
-        </button>
-        <button
-          onClick={handleClear}
-          className="btn btn-ghost"
-        >
-          Clear
-        </button>
+            <code className="block font-mono text-[12.5px] leading-relaxed text-ink break-all">
+              {results[algo] || (
+                <span className="text-ink-subtle">—</span>
+              )}
+            </code>
+          </div>
+        ))}
       </div>
 
-      <div className="py-4">
-        <AdContainer slot="6666666666" format="horizontal" />
-      </div>
+      <p className="text-[13px] text-ink-muted">
+        Hashing runs through the browser’s built-in WebCrypto implementation,
+        so your input is never sent anywhere. SHA-1 is included because older
+        systems still ask for it — don’t use it for anything security-related.
+      </p>
 
-      <div className="p-4 rounded-lg bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-sm">
-        This tool provides simple hash functions for demonstration. For production cryptographic hashing (MD5, SHA256, etc.), please use dedicated crypto libraries.
-      </div>
+      <AdContainer slot="6666666666" format="horizontal" />
     </div>
   );
 }
