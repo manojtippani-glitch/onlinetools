@@ -75,8 +75,18 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrains.variable} font-sans bg-canvas text-ink flex flex-col min-h-screen`}
       >
+        {/* Visible only once focused, so keyboard users can jump the
+            header instead of tabbing it on every page. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:btn focus:btn-primary"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1 w-full">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1 w-full">
+          {children}
+        </main>
         <Footer />
         <CommandPalette />
         <Analytics />

@@ -33,6 +33,7 @@ export default function CommandPalette() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // With no query the panel lists every tool, recents first. Showing a
   // slice of the registry instead would misrepresent the catalogue: the
@@ -100,8 +101,52 @@ export default function CommandPalette() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  /**
+   * Modal focus handling.
+   *
+   * Without the trap, Tab walks out of the panel into the 60-odd controls
+   * behind the overlay — invisible to a sighted keyboard user and
+   * incoherent to a screen reader. Focus also has to come back to whatever
+   * opened the palette, or dismissing it drops the user at the top of the
+   * document.
+   */
   useEffect(() => {
-    if (open) inputRef.current?.focus();
+    if (!open) return;
+
+    const previous = document.activeElement as HTMLElement | null;
+    inputRef.current?.focus();
+
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const panel = panelRef.current;
+      if (!panel) return;
+
+      const focusable = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', trap);
+    return () => {
+      document.removeEventListener('keydown', trap);
+      document.body.style.overflow = overflow;
+      previous?.focus?.();
+    };
   }, [open]);
 
   useEffect(() => {
@@ -146,6 +191,7 @@ export default function CommandPalette() {
       />
 
       <div
+        ref={panelRef}
         className="relative w-full max-w-lg panel overflow-hidden shadow-2xl"
         onKeyDown={onKeyDown}
       >
@@ -153,6 +199,9 @@ export default function CommandPalette() {
           <span className="text-ink-subtle shrink-0">
             <Icon name="search" className="w-4 h-4" />
           </span>
+          {/* Combobox pattern: focus stays in the input while
+              aria-activedescendant names the highlighted row, which is how
+              a screen reader announces what Enter will open. */}
           <input
             ref={inputRef}
             value={query}
@@ -160,13 +209,27 @@ export default function CommandPalette() {
             placeholder="Search tools"
             className="flex-1 bg-transparent border-0 p-0 text-[14px] focus:outline-none placeholder:text-ink-subtle"
             aria-label="Search tools"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="palette-results"
+            aria-activedescendant={
+              results[active] ? `palette-opt-${results[active].id}` : undefined
+            }
+            autoComplete="off"
+            spellCheck={false}
           />
           <kbd className="font-mono text-[10px] text-ink-subtle border border-line rounded px-1.5 py-0.5 shrink-0">
             esc
           </kbd>
         </div>
 
-        <div ref={listRef} className="max-h-[19rem] overflow-y-auto p-1.5">
+        <div
+          ref={listRef}
+          id="palette-results"
+          role="listbox"
+          aria-label="Tools"
+          className="max-h-[19rem] overflow-y-auto p-1.5"
+        >
           {results.length > 0 ? (
             results.map((tool, i) => (
               <div key={tool.id}>
@@ -182,6 +245,10 @@ export default function CommandPalette() {
                 )}
               <button
                 data-index={i}
+                id={`palette-opt-${tool.id}`}
+                role="option"
+                aria-selected={i === active}
+                tabIndex={-1}
                 onClick={() => go(tool)}
                 onMouseMove={() => setActive(i)}
                 className={`w-full flex items-center gap-3 px-2.5 py-2 rounded-lg text-left transition-colors ${
