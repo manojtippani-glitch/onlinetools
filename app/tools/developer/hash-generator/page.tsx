@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -18,7 +18,7 @@ function toHex(buffer: ArrayBuffer): string {
 }
 
 export default function HashGenerator() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [input, setInput] = useState('');
   const [results, setResults] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState('');

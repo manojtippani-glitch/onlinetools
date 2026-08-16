@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -108,7 +108,7 @@ const getDetailedError = (err: Error, input: string): string => {
 };
 
 export default function JsonFormatter() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');

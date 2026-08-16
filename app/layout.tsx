@@ -6,6 +6,7 @@ import Footer from '@/components/shared/Footer';
 import CommandPalette from '@/components/shared/CommandPalette';
 import { Analytics } from '@vercel/analytics/next';
 import { TOOLS } from '@/lib/tools';
+import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,6 +24,7 @@ const jetbrains = JetBrains_Mono({
 const TITLE = `OnlineTools — ${TOOLS.length} utilities that run in your browser`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   // Child pages set a bare title; the template appends the brand.
   title: {
     default: TITLE,

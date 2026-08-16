@@ -1,22 +1,21 @@
-import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import SiteSchema from '@/components/shared/SiteSchema';
 import HomeContent from '@/components/HomeContent';
 
 /**
- * Server shell around the interactive grid.
- *
- * HomeContent reads ?category= with useSearchParams, which forces the
- * whole route to render on demand unless a Suspense boundary sits above
- * it. Splitting it out lets the page prerender and be served from the
- * CDN, with the client half hydrating over the top.
+ * Server shell. HomeContent reads the query string via useQueryParams,
+ * which is plain client state rather than next/navigation, so the whole
+ * page prerenders with its real content and needs no Suspense boundary.
  */
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
+
 export default function Home() {
   return (
     <>
       <SiteSchema />
-      <Suspense>
-        <HomeContent />
-      </Suspense>
+      <HomeContent />
     </>
   );
 }

@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function RegexTester() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [pattern, setPattern] = useState('');
   const [testString, setTestString] = useState('');
   const [output, setOutput] = useState('');

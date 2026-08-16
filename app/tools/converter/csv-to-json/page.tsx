@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -79,7 +79,7 @@ Grace Hopper,Rear Admiral,Navy,true
 Katherine Johnson,Mathematician,Flight,false`;
 
 export default function CsvToJson() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [input, setInput] = useState('');
   const [delimiter, setDelimiter] = useState(',');
   const [hasHeader, setHasHeader] = useState(true);

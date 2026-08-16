@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -43,7 +43,7 @@ const EXAMPLES = [
 ];
 
 export default function SlugGenerator() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [input, setInput] = useState('');
   const [separator, setSeparator] = useState('-');
   const [lower, setLower] = useState(true);

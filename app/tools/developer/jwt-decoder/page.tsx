@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -26,7 +26,7 @@ const TIME_CLAIMS: Record<string, string> = {
 };
 
 export default function JwtDecoder() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [token, setToken] = useState('');
   const [copied, setCopied] = useState('');
 

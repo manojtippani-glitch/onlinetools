@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Link from 'next/link';
 import AdContainer from '@/components/shared/AdContainer';
 import Icon from '@/components/shared/Icon';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 
 export default function HomeContent() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [category, setCategory] = useState('');
 
   useEffect(() => {

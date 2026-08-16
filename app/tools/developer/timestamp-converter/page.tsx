@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -54,7 +54,7 @@ function relative(ms: number): string {
 }
 
 export default function TimestampConverter() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [raw, setRaw] = useState('');
   const [utc, setUtc] = useState(false);
   const [now, setNow] = useState<number | null>(null);

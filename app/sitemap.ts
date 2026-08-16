@@ -2,25 +2,33 @@ import type { MetadataRoute } from 'next';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
 
+/**
+ * lastModified is deliberately omitted.
+ *
+ * It was previously `new Date()` at build time, which told crawlers that
+ * all 38 pages changed on every deploy — including deploys that only
+ * touched one tool. A feed that cries wolf on every entry is worse than
+ * one that stays quiet: Google discounts the field once it stops
+ * correlating with real edits.
+ *
+ * Deriving it honestly needs per-page commit dates, and file mtimes don't
+ * survive a CI checkout, so nothing is claimed until there's a real
+ * source for it.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   return [
     {
       url: SITE_URL,
-      lastModified: now,
       changeFrequency: 'weekly',
       priority: 1,
     },
     ...CATEGORIES.map((category) => ({
       url: `${SITE_URL}/tools/${category.id}`,
-      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     })),
     ...TOOLS.map((tool) => ({
       url: `${SITE_URL}${toolHref(tool)}`,
-      lastModified: now,
       changeFrequency: 'monthly' as const,
       // Tool pages are the point of the site, so they outrank the
       // legal pages but sit just under the index.
@@ -28,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...['/privacy', '/terms', '/contact'].map((path) => ({
       url: `${SITE_URL}${path}`,
-      lastModified: now,
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     })),

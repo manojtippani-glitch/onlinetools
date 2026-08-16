@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import QRCode from 'qrcode';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
@@ -10,7 +10,7 @@ import RelatedTools from '@/components/shared/RelatedTools';
 const SIZES = [256, 512, 1024];
 
 export default function QrCodeGenerator() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [text, setText] = useState('');
   const [size, setSize] = useState(512);

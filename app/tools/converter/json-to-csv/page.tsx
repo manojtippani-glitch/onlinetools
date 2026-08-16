@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
@@ -87,7 +87,7 @@ const SAMPLE = JSON.stringify(
 );
 
 export default function JsonToCsv() {
-  const searchParams = useSearchParams();
+  const searchParams = useQueryParams();
   const [input, setInput] = useState('');
   const [delimiter, setDelimiter] = useState(',');
   const [copied, setCopied] = useState(false);
