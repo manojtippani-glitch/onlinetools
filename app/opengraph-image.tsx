@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { TOOLS } from '@/lib/tools';
 
 export const runtime = 'edge';
 export const alt = 'OnlineTools — utilities that run in your browser';
@@ -68,7 +69,7 @@ export default function OgImage() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <div style={{ color: '#a1a1aa', fontSize: 24 }}>24 free tools</div>
+          <div style={{ color: '#a1a1aa', fontSize: 24 }}>{TOOLS.length} free tools</div>
           <div style={{ color: '#3f3f46', fontSize: 24 }}>·</div>
           <div style={{ color: '#a1a1aa', fontSize: 24 }}>No account</div>
           <div style={{ color: '#3f3f46', fontSize: 24 }}>·</div>

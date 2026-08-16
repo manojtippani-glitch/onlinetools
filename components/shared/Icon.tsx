@@ -202,6 +202,52 @@ const PATHS: Record<string, React.ReactNode> = {
     </>
   ),
 
+  'timestamp-converter': (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </>
+  ),
+  'jwt-decoder': (
+    <>
+      <rect x="3" y="10" width="18" height="11" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0" />
+      <path d="M8.5 15.5h7" />
+    </>
+  ),
+  'base-converter': (
+    <>
+      <path d="M5 7h6" />
+      <path d="M8 4v6" />
+      <path d="M5 16h6" />
+      <path d="M13 5.5h6" />
+      <path d="M13 12h6" />
+      <path d="M13 18.5h6" />
+    </>
+  ),
+  'text-diff': (
+    <>
+      <path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4" />
+      <path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4" />
+      <path d="M12 4v16" />
+    </>
+  ),
+  'lorem-ipsum': (
+    <>
+      <path d="M4 5h16" />
+      <path d="M4 10h16" />
+      <path d="M4 15h12" />
+      <path d="M4 20h7" />
+    </>
+  ),
+  'csv-to-json': (
+    <>
+      <rect x="3" y="4" width="8" height="16" rx="1.5" />
+      <path d="M3 9h8" />
+      <path d="M15 7h1a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2 2 2 0 0 0-2 2v2a2 2 0 0 1-2 2h-1" />
+    </>
+  ),
+
   // --- Categories ---
   developer: (
     <>

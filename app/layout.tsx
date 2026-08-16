@@ -5,6 +5,7 @@ import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import CommandPalette from '@/components/shared/CommandPalette';
 import { Analytics } from '@vercel/analytics/next';
+import { TOOLS } from '@/lib/tools';
 
 export const revalidate = 0;
 
@@ -20,10 +21,13 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
+// Derived, so adding a tool can't leave a stale count in the title.
+const TITLE = `OnlineTools — ${TOOLS.length} utilities that run in your browser`;
+
 export const metadata: Metadata = {
   // Child pages set a bare title; the template appends the brand.
   title: {
-    default: 'OnlineTools — 24 utilities that run in your browser',
+    default: TITLE,
     template: '%s · OnlineTools',
   },
   description:
@@ -31,7 +35,7 @@ export const metadata: Metadata = {
   keywords:
     'json formatter, base64 encoder, url encoder, regex tester, qr code generator, word counter, color converter, developer tools',
   openGraph: {
-    title: 'OnlineTools — 24 utilities that run in your browser',
+    title: TITLE,
     description:
       'Formatters, encoders, converters and generators for everyday development work. Nothing uploads, nothing is stored.',
     type: 'website',

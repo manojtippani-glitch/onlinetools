@@ -30,6 +30,9 @@ export const TOOLS: Tool[] = [
   { id: 'hash-generator', name: 'Hash Generator', category: 'developer', description: 'SHA-1 through SHA-512, computed as you type' },
   { id: 'html-encoder', name: 'HTML Entities', category: 'developer', description: 'Escape angle brackets, quotes, and ampersands' },
   { id: 'xml-formatter', name: 'XML Formatter', category: 'developer', description: 'Indent nested XML and spot unclosed tags' },
+  { id: 'timestamp-converter', name: 'Timestamp Converter', category: 'developer', description: 'Unix epoch to a readable date, and back again' },
+  { id: 'jwt-decoder', name: 'JWT Decoder', category: 'developer', description: 'Read the header and claims out of a token' },
+  { id: 'base-converter', name: 'Number Base', category: 'developer', description: 'Binary, octal, decimal, and hex side by side' },
 
   // Text
   { id: 'word-counter', name: 'Word Counter', category: 'content', description: 'Words, characters, and sentences, counted live' },
@@ -38,6 +41,8 @@ export const TOOLS: Tool[] = [
   { id: 'markdown-editor', name: 'Markdown Editor', category: 'content', description: 'Write Markdown, watch the HTML update beside it' },
   { id: 'meta-tag-generator', name: 'Meta Tags', category: 'content', description: 'Build the title, description, and OG tags for a page' },
   { id: 'plagiarism-checker', name: 'Duplicate Text', category: 'content', description: 'Compare two passages and see what overlaps' },
+  { id: 'text-diff', name: 'Text Diff', category: 'content', description: 'Line-by-line comparison of two versions' },
+  { id: 'lorem-ipsum', name: 'Lorem Ipsum', category: 'content', description: 'Placeholder paragraphs, sentences, or words' },
 
   // Image
   { id: 'qr-code-generator', name: 'QR Code Generator', category: 'image', description: 'Encode a link or a note into a scannable code' },
@@ -48,6 +53,7 @@ export const TOOLS: Tool[] = [
 
   // Convert
   { id: 'json-to-csv', name: 'JSON to CSV', category: 'converter', description: 'Flatten an array of objects into spreadsheet rows' },
+  { id: 'csv-to-json', name: 'CSV to JSON', category: 'converter', description: 'Turn spreadsheet rows into an array of objects' },
   { id: 'unit-converter', name: 'Unit Converter', category: 'converter', description: 'Length, weight, and volume across metric and imperial' },
   { id: 'temperature-converter', name: 'Temperature', category: 'converter', description: 'Celsius, Fahrenheit, and Kelvin' },
   { id: 'password-generator', name: 'Password Generator', category: 'converter', description: 'Random strings with the character sets you pick' },

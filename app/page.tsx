@@ -36,7 +36,7 @@ export default function Home() {
         <div className="absolute inset-0 grid-veil pointer-events-none" aria-hidden="true" />
         <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
           <div className="max-w-2xl">
-            <p className="eyebrow mb-5">Twenty-four tools</p>
+            <p className="eyebrow mb-5">{TOOLS.length} tools</p>
             <h1 className="display text-[2.75rem] sm:text-6xl mb-6">
               The utilities you
               <br />

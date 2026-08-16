@@ -62,6 +62,25 @@ export const TOOLS_METADATA = {
     keywords: 'xml formatter, xml beautifier, format xml, indent xml',
   },
 
+  'timestamp-converter': {
+    title: 'Unix Timestamp Converter',
+    description:
+      'Convert a Unix epoch to a readable date and back, in local time or UTC. Handles seconds and milliseconds.',
+    keywords: 'unix timestamp converter, epoch converter, epoch to date, timestamp to date',
+  },
+  'jwt-decoder': {
+    title: 'JWT Decoder',
+    description:
+      'Read the header and payload of a JSON Web Token, with expiry and issued-at shown as real dates.',
+    keywords: 'jwt decoder, decode jwt, json web token decoder, jwt parser',
+  },
+  'base-converter': {
+    title: 'Number Base Converter',
+    description:
+      'Convert between binary, octal, decimal, and hexadecimal. Type in any field and the rest follow.',
+    keywords: 'number base converter, hex to decimal, binary to decimal, decimal to hex',
+  },
+
   // --- Text ---
   'word-counter': {
     title: 'Word and Character Counter',
@@ -98,6 +117,19 @@ export const TOOLS_METADATA = {
     description:
       'Compare two passages and see which phrases overlap, with a rough similarity score.',
     keywords: 'duplicate text checker, text similarity, compare text, overlap checker',
+  },
+
+  'text-diff': {
+    title: 'Text Diff Checker',
+    description:
+      'Compare two blocks of text line by line and see exactly what was added, removed, or left alone.',
+    keywords: 'text diff, diff checker, compare text online, text comparison',
+  },
+  'lorem-ipsum': {
+    title: 'Lorem Ipsum Generator',
+    description:
+      'Generate placeholder paragraphs, sentences, or words for mockups, with or without the classic opening.',
+    keywords: 'lorem ipsum generator, placeholder text, dummy text generator, filler text',
   },
 
   // --- Image ---
@@ -138,6 +170,12 @@ export const TOOLS_METADATA = {
     description:
       'Flatten an array of objects into spreadsheet rows, using the object keys as the header line.',
     keywords: 'json to csv, convert json to csv, json csv converter, export json',
+  },
+  'csv-to-json': {
+    title: 'CSV to JSON Converter',
+    description:
+      'Turn spreadsheet rows into an array of objects, using the header line as keys. Handles quoted fields.',
+    keywords: 'csv to json, convert csv to json, csv json converter, parse csv',
   },
   'unit-converter': {
     title: 'Unit Converter',
