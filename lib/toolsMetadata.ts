@@ -81,6 +81,19 @@ export const TOOLS_METADATA = {
     keywords: 'number base converter, hex to decimal, binary to decimal, decimal to hex',
   },
 
+  'cron-parser': {
+    title: 'Cron Expression Parser',
+    description:
+      'Paste a cron schedule and read back what it actually runs, in plain English, with each field explained.',
+    keywords: 'cron parser, cron expression, crontab explained, cron schedule reader',
+  },
+  'url-parser': {
+    title: 'URL Parser and Query String Viewer',
+    description:
+      'Split a URL into scheme, host, path, and query. Repeated parameters stay separate and escaping is decoded.',
+    keywords: 'url parser, query string parser, parse url online, url decoder',
+  },
+
   // --- Text ---
   'word-counter': {
     title: 'Word and Character Counter',
@@ -130,6 +143,13 @@ export const TOOLS_METADATA = {
     description:
       'Generate placeholder paragraphs, sentences, or words for mockups, with or without the classic opening.',
     keywords: 'lorem ipsum generator, placeholder text, dummy text generator, filler text',
+  },
+
+  'line-tools': {
+    title: 'Sort Lines and Remove Duplicates',
+    description:
+      'Sort a list naturally, drop repeated lines, strip blanks and stray whitespace. Handles item2 before item10.',
+    keywords: 'remove duplicate lines, sort lines alphabetically, dedupe list, line sorter',
   },
 
   // --- Image ---

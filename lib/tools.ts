@@ -33,6 +33,8 @@ export const TOOLS: Tool[] = [
   { id: 'timestamp-converter', name: 'Timestamp Converter', category: 'developer', description: 'Unix epoch to a readable date, and back again' },
   { id: 'jwt-decoder', name: 'JWT Decoder', category: 'developer', description: 'Read the header and claims out of a token' },
   { id: 'base-converter', name: 'Number Base', category: 'developer', description: 'Binary, octal, decimal, and hex side by side' },
+  { id: 'cron-parser', name: 'Cron Parser', category: 'developer', description: 'Read a cron schedule back in plain English' },
+  { id: 'url-parser', name: 'URL Parser', category: 'developer', description: 'Split a URL into parts and read its query string' },
 
   // Text
   { id: 'word-counter', name: 'Word Counter', category: 'content', description: 'Words, characters, and sentences, counted live' },
@@ -43,6 +45,7 @@ export const TOOLS: Tool[] = [
   { id: 'plagiarism-checker', name: 'Duplicate Text', category: 'content', description: 'Compare two passages and see what overlaps' },
   { id: 'text-diff', name: 'Text Diff', category: 'content', description: 'Line-by-line comparison of two versions' },
   { id: 'lorem-ipsum', name: 'Lorem Ipsum', category: 'content', description: 'Placeholder paragraphs, sentences, or words' },
+  { id: 'line-tools', name: 'Sort & Dedupe', category: 'content', description: 'Sort lines, drop duplicates, strip blanks' },
 
   // Image
   { id: 'qr-code-generator', name: 'QR Code Generator', category: 'image', description: 'Encode a link or a note into a scannable code' },

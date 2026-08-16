@@ -104,6 +104,39 @@ export const TOOL_FAQS: Record<string, Faq[]> = {
     },
   ],
 
+  'cron-parser': [
+    {
+      q: 'Why does my cron job run more often than expected?',
+      a: 'Most often because both day-of-month and day-of-week are set. In standard cron those combine with OR, not AND — "0 0 13 * 5" fires on the 13th *and* every Friday, not only Friday the 13th.',
+    },
+    {
+      q: 'My expression has six fields and is rejected. Why?',
+      a: 'Six fields means a leading seconds column, which Quartz and Spring support but standard Unix cron does not. Drop the first field to get the five-field form.',
+    },
+  ],
+
+  'url-parser': [
+    {
+      q: 'What happens to repeated query parameters?',
+      a: 'They are kept separately. ?size=42&size=43 is legal and meaningful — many frameworks read it as an array — so collapsing it to one value would hide real data.',
+    },
+    {
+      q: 'Why does my URL fail to parse without https://?',
+      a: 'A URL needs a scheme to be a URL rather than a path. example.com/page is ambiguous; https://example.com/page is not.',
+    },
+  ],
+
+  'line-tools': [
+    {
+      q: 'Why does item10 sort after item2 here but not elsewhere?',
+      a: 'Sorting is natural: runs of digits compare as numbers. Plain lexicographic order compares character by character, which puts item10 before item2 because 1 precedes 2.',
+    },
+    {
+      q: 'Does removing duplicates keep the first or the last?',
+      a: 'The first occurrence stays and later repeats are dropped, so the original order of what remains is preserved.',
+    },
+  ],
+
   'regex-tester': [
     {
       q: 'Which regex flavour does this use?',

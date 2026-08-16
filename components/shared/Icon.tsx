@@ -248,6 +248,33 @@ const PATHS: Record<string, React.ReactNode> = {
     </>
   ),
 
+  'cron-parser': (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5v4.5l3 1.8" />
+      <path d="M12 3v1.5" />
+      <path d="M21 12h-1.5" />
+    </>
+  ),
+  'url-parser': (
+    <>
+      <path d="M4 7h16" />
+      <path d="M4 12h9" />
+      <path d="M4 17h6" />
+      <circle cx="18" cy="15" r="3" />
+      <path d="m20.2 17.2 1.8 1.8" />
+    </>
+  ),
+  'line-tools': (
+    <>
+      <path d="M4 6h11" />
+      <path d="M4 12h8" />
+      <path d="M4 18h5" />
+      <path d="M17.5 8v11" />
+      <path d="m14.5 16 3 3 3-3" />
+    </>
+  ),
+
   // --- Categories ---
   developer: (
     <>

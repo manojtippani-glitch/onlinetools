@@ -68,12 +68,21 @@ export default function OgImage() {
           </div>
         </div>
 
+        {/* Each cell is one interpolated string. Satori rejects an element
+            with more than one child unless display is explicit, and
+            `{TOOLS.length} free tools` is two text nodes, not one — which
+            failed at request time while the build still reported success. */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <div style={{ color: '#a1a1aa', fontSize: 24 }}>{TOOLS.length} free tools</div>
-          <div style={{ color: '#3f3f46', fontSize: 24 }}>·</div>
-          <div style={{ color: '#a1a1aa', fontSize: 24 }}>No account</div>
-          <div style={{ color: '#3f3f46', fontSize: 24 }}>·</div>
-          <div style={{ color: '#a1a1aa', fontSize: 24 }}>Nothing uploaded</div>
+          {[`${TOOLS.length} free tools`, '·', 'No account', '·', 'Nothing uploaded'].map(
+            (text, i) => (
+              <div
+                key={i}
+                style={{ color: text === '·' ? '#3f3f46' : '#a1a1aa', fontSize: 24 }}
+              >
+                {text}
+              </div>
+            )
+          )}
         </div>
       </div>
     ),

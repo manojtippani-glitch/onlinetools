@@ -9,7 +9,19 @@ export const metadata: Metadata = {
   title: post.title,
   description: post.description,
   alternates: { canonical: `/blog/${post.slug}` },
-  openGraph: { title: post.title, description: post.description, type: 'article' },
+  openGraph: {
+    title: post.title,
+    description: post.description,
+    type: 'article',
+    publishedTime: post.published,
+    images: [{ url: `/og/post/${post.slug}`, width: 1200, height: 630, alt: post.title }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: post.title,
+    description: post.description,
+    images: [`/og/post/${post.slug}`],
+  },
 };
 
 export default function Page() {
