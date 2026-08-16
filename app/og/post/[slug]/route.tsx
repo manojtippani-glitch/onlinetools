@@ -107,6 +107,13 @@ export async function GET(
         </div>
       </div>
     ),
-    { width: 1200, height: 630 }
+    {
+      width: 1200,
+      height: 630,
+      // Deterministic per URL, so let the CDN and social scrapers keep it.
+      // Set here rather than in next.config so it replaces the framework
+      // default instead of arriving alongside it as a second header.
+      headers: { 'Cache-Control': 'public, max-age=3600, s-maxage=86400' },
+    }
   );
 }
