@@ -13,10 +13,25 @@ type Result = {
 };
 
 const FORMATS = [
-  { value: 'image/jpeg', label: 'JPEG' },
   { value: 'image/webp', label: 'WebP' },
+  { value: 'image/jpeg', label: 'JPEG' },
   { value: 'image/png', label: 'PNG' },
 ];
+
+/**
+ * Pick the output format from what was dropped in.
+ *
+ * Defaulting everything to JPEG inflates the common case: screenshots and
+ * graphics are PNGs, and JPEG handles their flat colour and hard edges
+ * badly enough to come out *larger* than the source. WebP beats both on
+ * that material, so PNG input starts there; photographs already in JPEG
+ * stay JPEG, where re-encoding is a straightforward win.
+ */
+function defaultFormatFor(type: string): string {
+  if (type === 'image/jpeg') return 'image/jpeg';
+  if (type === 'image/webp') return 'image/webp';
+  return 'image/webp';
+}
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -30,7 +45,8 @@ export default function ImageCompressor() {
   const [source, setSource] = useState<Result | null>(null);
   const [output, setOutput] = useState<Result | null>(null);
   const [quality, setQuality] = useState(0.75);
-  const [format, setFormat] = useState('image/jpeg');
+  const [format, setFormat] = useState('image/webp');
+  const [formatTouched, setFormatTouched] = useState(false);
   const [maxWidth, setMaxWidth] = useState(0); // 0 = keep original
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -44,6 +60,8 @@ export default function ImageCompressor() {
     }
     setError('');
     setFile(picked);
+    // Only until the user picks for themselves — after that, respect it.
+    if (!formatTouched) setFormat(defaultFormatFor(picked.type));
   };
 
   // Read the original once per file so the comparison has a baseline.
@@ -204,7 +222,10 @@ export default function ImageCompressor() {
               <span className="text-[13px] font-medium">Format</span>
               <select
                 value={format}
-                onChange={(e) => setFormat(e.target.value)}
+                onChange={(e) => {
+                  setFormat(e.target.value);
+                  setFormatTouched(true);
+                }}
                 className="select"
               >
                 {FORMATS.map((f) => (
@@ -295,6 +316,14 @@ export default function ImageCompressor() {
                   : `${Math.abs(saved)}% larger at these settings`}
               </span>
             </div>
+          )}
+
+          {output && saved <= 0 && (
+            <p className="text-[13px] text-ink-muted">
+              This encoding is not helping. WebP usually wins on screenshots
+              and flat graphics; JPEG on photographs. Lowering the quality or
+              capping the width will also bring it down.
+            </p>
           )}
         </>
       )}
