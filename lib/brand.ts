@@ -9,7 +9,7 @@
  * Safe to import from client components: no environment variables here.
  * The origin lives in lib/site.ts, which is server-only.
  */
-export const BRAND = 'OnlineTools';
+export const BRAND = 'PasteBench';
 
 /**
  * The square logo mark. Derived from the capitals in BRAND so it follows a

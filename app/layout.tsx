@@ -6,6 +6,7 @@ import Footer from '@/components/shared/Footer';
 import CommandPalette from '@/components/shared/CommandPalette';
 import ServiceWorker from '@/components/shared/ServiceWorker';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { TOOLS } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
 import { BRAND } from '@/lib/brand';
@@ -98,6 +99,7 @@ export default function RootLayout({
         <CommandPalette />
         <ServiceWorker />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-# OnlineTools
+# PasteBench
 
 Thirty-three formatters, encoders, converters and generators that run in the
 browser. No account, no upload, no server-side processing — every tool is
@@ -64,7 +64,7 @@ page, one layout, and an icon in `components/shared/Icon.tsx`.
 header, the footer, the page titles, the manifest, the RSS channel, every
 generated share card, the schema publisher, and the prose in the privacy
 policy and terms. The square logo mark is derived from the capitals in the
-name, so `OnlineTools` gives `OT` and `PasteBench` gives `PB` with no second
+name, so `PasteBench` gives `PB` and `OnlineTools` would give `OT` with no second
 edit.
 
 ## Configuration
