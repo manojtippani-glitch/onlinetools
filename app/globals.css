@@ -194,6 +194,19 @@ body {
   cursor: not-allowed;
 }
 
+/* On touch screens the small buttons are under the ~44px guideline. Grow
+   the hit area with a pseudo-element so nothing shifts visually. */
+@media (pointer: coarse) {
+  .btn {
+    position: relative;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+}
+
 .btn-primary {
   background: var(--invert-bg);
   color: var(--invert-fg);

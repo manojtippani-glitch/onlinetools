@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
+import CommandPalette from '@/components/shared/CommandPalette';
 import { Analytics } from '@vercel/analytics/next';
 
 export const revalidate = 0;
@@ -73,6 +74,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 w-full">{children}</main>
         <Footer />
+        <CommandPalette />
         <Analytics />
       </body>
     </html>
