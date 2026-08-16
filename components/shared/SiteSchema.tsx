@@ -1,5 +1,6 @@
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
+import { BRAND } from '@/lib/brand';
 
 /**
  * Homepage structured data.
@@ -13,7 +14,7 @@ export default function SiteSchema() {
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
-      name: 'OnlineTools',
+      name: BRAND,
       url: SITE_URL,
       description: `${TOOLS.length} formatters, encoders, and converters that run in your browser.`,
       inLanguage: 'en',
@@ -22,7 +23,7 @@ export default function SiteSchema() {
     {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#org`,
-      name: 'OnlineTools',
+      name: BRAND,
       url: SITE_URL,
     },
     {

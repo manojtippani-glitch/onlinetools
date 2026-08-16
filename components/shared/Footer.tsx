@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
+import { BRAND } from '@/lib/brand';
 
 const LEGAL = [
   { name: 'Articles', href: '/blog' },
@@ -55,7 +56,7 @@ export default function Footer() {
             Every tool runs locally in your browser. Nothing is uploaded.
           </p>
           <p className="font-mono text-[11px] text-ink-subtle">
-            © {new Date().getFullYear()} OnlineTools
+            © {new Date().getFullYear()} {BRAND}
           </p>
         </div>
       </div>

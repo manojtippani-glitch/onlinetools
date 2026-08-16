@@ -6,6 +6,7 @@ import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import { TOOLS, CATEGORIES, toolHref, type Category } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
+import { BRAND } from '@/lib/brand';
 
 // Copy per category. Written out rather than templated so each landing
 // page says something specific enough to be worth indexing.
@@ -64,7 +65,7 @@ export async function generateMetadata({
       description: copy.description,
       url,
       type: 'website',
-      siteName: 'OnlineTools',
+      siteName: BRAND,
     },
   };
 }

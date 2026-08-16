@@ -4,6 +4,7 @@ import Icon from './Icon';
 import { getPost, formatDate } from '@/lib/posts';
 import { getTool, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
+import { BRAND } from '@/lib/brand';
 
 /**
  * Chrome around an article: breadcrumbs, byline, schema, and the tools the
@@ -31,8 +32,8 @@ export default function PostLayout({
     dateModified: post.updated ?? post.published,
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Organization', name: 'OnlineTools', url: SITE_URL },
-    publisher: { '@type': 'Organization', name: 'OnlineTools', url: SITE_URL },
+    author: { '@type': 'Organization', name: BRAND, url: SITE_URL },
+    publisher: { '@type': 'Organization', name: BRAND, url: SITE_URL },
   };
 
   const breadcrumbs = {

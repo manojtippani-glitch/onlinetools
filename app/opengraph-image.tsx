@@ -1,8 +1,9 @@
 import { ImageResponse } from 'next/og';
 import { TOOLS } from '@/lib/tools';
+import { BRAND, MONOGRAM } from '@/lib/brand';
 
 export const runtime = 'edge';
-export const alt = 'OnlineTools — utilities that run in your browser';
+export const alt = `${BRAND} — utilities that run in your browser`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -36,10 +37,10 @@ export default function OgImage() {
               fontWeight: 700,
             }}
           >
-            OT
+            {MONOGRAM}
           </div>
           <div style={{ color: '#fafaf9', fontSize: 26, fontWeight: 500 }}>
-            OnlineTools
+            {BRAND}
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { TOOLS } from '@/lib/tools';
+import { BRAND } from '@/lib/brand';
 
 /**
  * Installable app manifest.
@@ -10,8 +11,8 @@ import { TOOLS } from '@/lib/tools';
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'OnlineTools',
-    short_name: 'OnlineTools',
+    name: BRAND,
+    short_name: BRAND,
     description: `${TOOLS.length} formatters, encoders, and converters that run in your browser. No account, nothing uploaded.`,
     start_url: '/',
     display: 'standalone',

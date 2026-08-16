@@ -8,6 +8,7 @@ import ServiceWorker from '@/components/shared/ServiceWorker';
 import { Analytics } from '@vercel/analytics/next';
 import { TOOLS } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
+import { BRAND } from '@/lib/brand';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,14 +23,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 // Derived, so adding a tool can't leave a stale count in the title.
-const TITLE = `OnlineTools — ${TOOLS.length} utilities that run in your browser`;
+const TITLE = `${BRAND} — ${TOOLS.length} utilities that run in your browser`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Child pages set a bare title; the template appends the brand.
   title: {
     default: TITLE,
-    template: '%s · OnlineTools',
+    template: `%s · ${BRAND}`,
   },
   description:
     'Formatters, encoders, converters and generators for everyday development work. Nothing uploads, nothing is stored, and there is no account to make.',

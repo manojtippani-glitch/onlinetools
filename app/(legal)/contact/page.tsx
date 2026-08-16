@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BRAND } from '@/lib/brand';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
   title: 'Contact',
-  description: 'How to report a bug, request a tool, or ask about OnlineTools.',
+  description: `How to report a bug, request a tool, or ask about ${BRAND}.`,
 };
 
 /**

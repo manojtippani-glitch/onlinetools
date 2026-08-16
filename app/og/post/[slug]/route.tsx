@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { getPost, formatDate } from '@/lib/posts';
+import { BRAND, MONOGRAM } from '@/lib/brand';
 
 export const runtime = 'edge';
 
@@ -11,7 +12,7 @@ export async function GET(
   const { slug } = await params;
   const post = getPost(slug);
 
-  const title = post?.title ?? 'OnlineTools';
+  const title = post?.title ?? BRAND;
   const description = post?.description ?? '';
 
   return new ImageResponse(
@@ -43,10 +44,10 @@ export async function GET(
               fontWeight: 700,
             }}
           >
-            OT
+            {MONOGRAM}
           </div>
           <div style={{ color: '#fafaf9', fontSize: 26, fontWeight: 500 }}>
-            OnlineTools
+            {BRAND}
           </div>
           <div
             style={{
@@ -95,7 +96,7 @@ export async function GET(
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           {(post
             ? [formatDate(post.published), '·', `${post.minutes} min read`]
-            : ['OnlineTools']
+            : [BRAND]
           ).map((text, i) => (
             <div
               key={i}

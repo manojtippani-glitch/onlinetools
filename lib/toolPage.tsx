@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getToolMetadata } from './toolsMetadata';
 import { getTool, toolHref, categoryName } from './tools';
 import { SITE_URL } from './site';
+import { BRAND } from './brand';
 
 /**
  * Metadata for a tool page, including the canonical URL.
@@ -33,7 +34,7 @@ export function buildToolMetadata(id: string): Metadata {
       description: meta.description,
       url,
       type: 'website',
-      siteName: 'OnlineTools',
+      siteName: BRAND,
       images: [image],
     },
     twitter: {
@@ -106,7 +107,7 @@ export function ToolSchema({ id }: { id: string }) {
     isAccessibleForFree: true,
     publisher: {
       '@type': 'Organization',
-      name: 'OnlineTools',
+      name: BRAND,
       url: SITE_URL,
     },
   };

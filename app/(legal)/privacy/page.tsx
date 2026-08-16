@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BRAND } from '@/lib/brand';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/privacy' },
   title: 'Privacy Policy',
   description:
-    'What OnlineTools collects, what it does not, and which third parties are involved.',
+    `What ${BRAND} collects, what it does not, and which third parties are involved.`,
 };
 
 const UPDATED = 'February 2026';
@@ -17,7 +18,7 @@ export default function Privacy() {
       <h1 className="headline text-[2rem] mb-6">Privacy Policy</h1>
 
       <p className="lead">
-        OnlineTools is built so that there is very little to collect. The tools
+        {BRAND} is built so that there is very little to collect. The tools
         themselves run entirely inside your browser, and this page explains
         exactly what that does and does not mean.
       </p>

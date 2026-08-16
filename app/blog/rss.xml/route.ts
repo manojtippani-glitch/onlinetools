@@ -1,5 +1,6 @@
 import { postsByDate } from '@/lib/posts';
 import { SITE_URL } from '@/lib/site';
+import { BRAND_ARTICLES } from '@/lib/brand';
 
 /** XML has five characters that must be escaped inside text nodes. */
 const esc = (s: string) =>
@@ -31,7 +32,7 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OnlineTools Articles</title>
+    <title>${BRAND_ARTICLES}</title>
     <link>${SITE_URL}/blog</link>
     <description>Notes on image formats, encodings, JSON, tokens, and the mistakes that come with them.</description>
     <language>en</language>

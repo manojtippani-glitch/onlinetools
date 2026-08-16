@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { getTool, categoryName } from '@/lib/tools';
+import { BRAND, MONOGRAM } from '@/lib/brand';
 
 export const runtime = 'edge';
 
@@ -18,7 +19,7 @@ export async function GET(
   const { tool: toolId } = await params;
   const tool = getTool(toolId);
 
-  const name = tool?.name ?? 'OnlineTools';
+  const name = tool?.name ?? BRAND;
   const description =
     tool?.description ?? 'Utilities that run in your browser';
   const label = tool ? categoryName(tool.category) : 'Tools';
@@ -52,10 +53,10 @@ export async function GET(
               fontWeight: 700,
             }}
           >
-            OT
+            {MONOGRAM}
           </div>
           <div style={{ color: '#fafaf9', fontSize: 26, fontWeight: 500 }}>
-            OnlineTools
+            {BRAND}
           </div>
           <div
             style={{

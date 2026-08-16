@@ -58,6 +58,15 @@ scripts/smoke.mjs            route checks
 sitemap and the related-tool links. Adding a tool means one entry there, one
 page, one layout, and an icon in `components/shared/Icon.tsx`.
 
+## Renaming the site
+
+`lib/brand.ts` holds the name. Change `BRAND` and everything follows: the
+header, the footer, the page titles, the manifest, the RSS channel, every
+generated share card, the schema publisher, and the prose in the privacy
+policy and terms. The square logo mark is derived from the capitals in the
+name, so `OnlineTools` gives `OT` and `PasteBench` gives `PB` with no second
+edit.
+
 ## Configuration
 
 Everything works with no environment variables set.

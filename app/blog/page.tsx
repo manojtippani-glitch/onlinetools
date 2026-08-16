@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { postsByDate, formatDate } from '@/lib/posts';
 import { SITE_URL } from '@/lib/site';
+import { BRAND_ARTICLES } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: 'Articles',
@@ -19,7 +20,7 @@ export default function Blog() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'OnlineTools Articles',
+    name: BRAND_ARTICLES,
     url: `${SITE_URL}/blog`,
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',

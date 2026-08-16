@@ -1,3 +1,5 @@
+import { BRAND } from './brand';
+
 /**
  * Per-tool SEO copy.
  *
@@ -226,7 +228,7 @@ export const TOOLS_METADATA = {
 export function getToolMetadata(toolId: string) {
   return (
     TOOLS_METADATA[toolId as keyof typeof TOOLS_METADATA] || {
-      title: 'OnlineTools',
+      title: BRAND,
       description:
         'Formatters, encoders, and converters that run in your browser.',
       keywords: 'online tools, developer tools',

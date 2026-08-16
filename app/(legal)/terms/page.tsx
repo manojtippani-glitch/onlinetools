@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BRAND } from '@/lib/brand';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/terms' },
   title: 'Terms of Use',
-  description: 'The terms that apply when you use the tools on OnlineTools.',
+  description: `The terms that apply when you use the tools on ${BRAND}.`,
 };
 
 const UPDATED = 'February 2026';
@@ -16,7 +17,7 @@ export default function Terms() {
       <h1 className="headline text-[2rem] mb-6">Terms of Use</h1>
 
       <p className="lead">
-        These terms cover your use of OnlineTools. They are short because the
+        These terms cover your use of {BRAND}. They are short because the
         site is simple: there is no account, no payment, and nothing to cancel.
       </p>
 
