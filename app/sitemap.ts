@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
-import { POSTS } from '@/lib/posts';
+import { livePosts } from '@/lib/posts';
 
 /**
  * lastModified is deliberately omitted.
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
-    ...POSTS.map((post) => ({
+    ...livePosts().map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,
       changeFrequency: 'yearly' as const,
       priority: 0.6,

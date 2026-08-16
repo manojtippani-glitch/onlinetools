@@ -67,7 +67,29 @@ export const getPost = (slug: string) => POSTS.find((p) => p.slug === slug);
 
 /** Newest first, which is how both the index and the feed want them. */
 export const postsByDate = () =>
-  [...POSTS].sort((a, b) => b.published.localeCompare(a.published));
+  livePosts().sort((a, b) => b.published.localeCompare(a.published));
+
+/**
+ * Scheduling.
+ *
+ * A `published` date in the future holds the post back: it stays out of the
+ * index, the sitemap, and the feed, and its page is marked noindex until
+ * the date arrives. That allows a genuine publication cadence — write
+ * several, release them weekly — without backdating anything, which would
+ * put a false claim into the BlogPosting schema and the RSS feed.
+ *
+ * The comparison is date-only in UTC, so a post dated today is live
+ * regardless of the reader's timezone.
+ *
+ * One caveat worth knowing: pages are prerendered, so a scheduled post
+ * appears at the next build rather than at midnight on its own. A daily
+ * Vercel deploy hook covers that if you start using it.
+ */
+const today = () => new Date().toISOString().slice(0, 10);
+
+export const isLive = (post: Post) => post.published <= today();
+
+export const livePosts = () => POSTS.filter(isLive);
 
 export const formatDate = (iso: string) =>
   new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', {

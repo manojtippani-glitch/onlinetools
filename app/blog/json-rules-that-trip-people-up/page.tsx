@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PostLayout from '@/components/shared/PostLayout';
-import { getPost } from '@/lib/posts';
+import { getPost, isLive } from '@/lib/posts';
 
 const post = getPost('json-rules-that-trip-people-up')!;
 
@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: post.title,
   description: post.description,
   alternates: { canonical: `/blog/${post.slug}` },
+  // Scheduled but not yet due: reachable by direct link, kept out
+  // of the index until its date arrives.
+  ...(isLive(post) ? {} : { robots: { index: false, follow: false } }),
   openGraph: {
     title: post.title,
     description: post.description,
