@@ -16,7 +16,8 @@ export const metadata: Metadata = {
  * than showing a dead mailto.
  */
 export const CONTACT_EMAIL = '';
-export const ISSUES_URL = '';
+export const ISSUES_URL =
+  'https://github.com/manojtippani-glitch/onlinetools/issues';
 
 export default function Contact() {
   return (
@@ -36,13 +37,17 @@ export default function Contact() {
           is a small operation, so a reply may take a few days.
         </p>
       )}
+      {/* Reads correctly with or without an email above it — "also" only
+          makes sense once there is something for it to be additional to. */}
       {ISSUES_URL && (
         <p>
-          Bugs and tool requests can also go straight to{' '}
+          {CONTACT_EMAIL ? 'Either of those can also go straight to ' : 'All of it goes to '}
           <a href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
             the issue tracker
           </a>
-          , which is usually the faster route.
+          {CONTACT_EMAIL
+            ? ', which is usually the faster route.'
+            : ', which needs a GitHub account but gets the fastest reply. An email address will be published here shortly for anyone who would rather not use one.'}
         </p>
       )}
       {!CONTACT_EMAIL && !ISSUES_URL && (
