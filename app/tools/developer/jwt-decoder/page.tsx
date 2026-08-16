@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 /** JWTs use base64url: '-' and '_' swapped in, padding stripped. */
 function decodeSegment(segment: string): unknown {
@@ -185,7 +184,6 @@ export default function JwtDecoder() {
       </div>
 
       <AdContainer slot="1919191902" format="horizontal" />
-      <RelatedTools current="jwt-decoder" />
     </div>
   );
 }

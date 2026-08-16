@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 type Row = { kind: 'same' | 'add' | 'remove'; text: string; a?: number; b?: number };
 
@@ -215,7 +214,6 @@ export default function TextDiff() {
       )}
 
       <AdContainer slot="1919191904" format="horizontal" />
-      <RelatedTools current="text-diff" />
     </div>
   );
 }

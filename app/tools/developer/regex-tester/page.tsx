@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function RegexTester() {
   const searchParams = useQueryParams();
@@ -181,7 +180,6 @@ export default function RegexTester() {
       <div className="py-4">
         <AdContainer slot="5555555555" format="horizontal" />
       </div>
-    <RelatedTools current="regex-tester" />
     </div>
   );
 }

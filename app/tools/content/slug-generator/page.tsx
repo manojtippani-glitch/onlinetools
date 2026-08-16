@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 /**
@@ -172,7 +171,6 @@ export default function SlugGenerator() {
       </div>
 
       <AdContainer slot="1111111111" format="horizontal" />
-    <RelatedTools current="slug-generator" />
     </div>
   );
 }

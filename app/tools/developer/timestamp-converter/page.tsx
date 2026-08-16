@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -209,7 +208,6 @@ export default function TimestampConverter() {
       </div>
 
       <AdContainer slot="1919191901" format="horizontal" />
-      <RelatedTools current="timestamp-converter" />
     </div>
   );
 }

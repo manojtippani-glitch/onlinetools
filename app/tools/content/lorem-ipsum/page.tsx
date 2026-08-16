@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 const WORDS = `lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis
@@ -173,7 +172,6 @@ export default function LoremIpsum() {
       </button>
 
       <AdContainer slot="1919191905" format="horizontal" />
-      <RelatedTools current="lorem-ipsum" />
     </div>
   );
 }

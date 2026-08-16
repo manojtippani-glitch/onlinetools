@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 type Hsl = { h: number; s: number; l: number };
 
@@ -189,7 +188,6 @@ export default function ColorPalette() {
       </div>
 
       <AdContainer slot="1717171717" format="horizontal" />
-    <RelatedTools current="color-palette" />
     </div>
   );
 }

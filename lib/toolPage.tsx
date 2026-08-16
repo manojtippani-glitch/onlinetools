@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getToolMetadata } from './toolsMetadata';
-import { getTool, toolHref } from './tools';
+import { getTool, toolHref, categoryName } from './tools';
 import { SITE_URL } from './site';
 
 /**
@@ -49,6 +49,41 @@ export function buildToolMetadata(id: string): Metadata {
  * Schema.org markup describing the tool as a free web application. This is
  * what lets a result show up as something richer than a plain blue link.
  */
+/**
+ * Breadcrumb trail for search results.
+ *
+ * Turns the blue URL line into Home › Developer › JSON Formatter, which
+ * shows the visitor where the page sits before they click.
+ */
+export function BreadcrumbSchema({ id }: { id: string }) {
+  const tool = getTool(id);
+  if (!tool) return null;
+
+  const trail = [
+    { name: 'Home', item: SITE_URL },
+    { name: categoryName(tool.category), item: `${SITE_URL}/tools/${tool.category}` },
+    { name: tool.name, item: `${SITE_URL}${toolHref(tool)}` },
+  ];
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((step, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: step.name,
+      item: step.item,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function ToolSchema({ id }: { id: string }) {
   const meta = getToolMetadata(id);
   const tool = getTool(id);

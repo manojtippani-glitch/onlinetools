@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 const getLineAndColumn = (input: string, position: number): { line: number; column: number } => {
@@ -336,7 +335,6 @@ export default function JsonFormatter() {
           <p className="text-sm text-ink-muted">Compress JSON to smallest size</p>
         </div>
       </div>
-    <RelatedTools current="json-formatter" />
     </div>
   );
 }

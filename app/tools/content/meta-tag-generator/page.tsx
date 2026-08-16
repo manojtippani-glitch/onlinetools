@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 /** Without this, a title containing a quote closes the attribute early
  *  and produces markup that silently breaks the page it's pasted into. */
@@ -198,7 +197,6 @@ export default function MetaTagGenerator() {
       )}
 
       <AdContainer slot="1313131313" format="horizontal" />
-    <RelatedTools current="meta-tag-generator" />
     </div>
   );
 }

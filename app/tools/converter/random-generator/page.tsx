@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 type Mode = 'number' | 'string' | 'uuid';
 
@@ -185,7 +184,6 @@ export default function RandomGenerator() {
       </button>
 
       <AdContainer slot="1818181822" format="horizontal" />
-    <RelatedTools current="random-generator" />
     </div>
   );
 }

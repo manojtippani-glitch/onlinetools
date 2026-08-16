@@ -5,7 +5,6 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 const SAMPLE = `# Markdown Editor
 
@@ -188,7 +187,6 @@ export default function MarkdownEditor() {
         }
         .md-preview img { max-width: 100%; border-radius: 8px; }
       `}</style>
-    <RelatedTools current="markdown-editor" />
     </div>
   );
 }

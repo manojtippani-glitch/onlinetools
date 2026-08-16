@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 const normalise = (text: string) =>
   text.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, '').split(/\s+/).filter(Boolean);
@@ -186,7 +185,6 @@ export default function DuplicateTextChecker() {
       )}
 
       <AdContainer slot="1414141414" format="horizontal" />
-    <RelatedTools current="plagiarism-checker" />
     </div>
   );
 }

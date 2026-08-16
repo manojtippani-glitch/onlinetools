@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 export default function XmlFormatter() {
@@ -198,7 +197,6 @@ export default function XmlFormatter() {
       <div className="py-4">
         <AdContainer slot="8888888888" format="horizontal" />
       </div>
-    <RelatedTools current="xml-formatter" />
     </div>
   );
 }

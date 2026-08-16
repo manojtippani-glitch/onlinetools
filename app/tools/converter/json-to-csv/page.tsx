@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 /**
@@ -227,7 +226,6 @@ export default function JsonToCsv() {
       </div>
 
       <AdContainer slot="1818181819" format="horizontal" />
-    <RelatedTools current="json-to-csv" />
     </div>
   );
 }

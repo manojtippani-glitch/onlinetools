@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 const BASES = [
   { base: 2, label: 'Binary', pattern: /^[01]*$/, placeholder: '1010' },
@@ -124,7 +123,6 @@ export default function BaseConverter() {
       </div>
 
       <AdContainer slot="1919191903" format="horizontal" />
-      <RelatedTools current="base-converter" />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useQueryParams } from '@/lib/useQueryParams';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 import ShareLink from '@/components/shared/ShareLink';
 
 export default function WordCounter() {
@@ -80,7 +79,6 @@ export default function WordCounter() {
       <div className="py-4">
         <AdContainer slot="9999999999" format="horizontal" />
       </div>
-    <RelatedTools current="word-counter" />
     </div>
   );
 }

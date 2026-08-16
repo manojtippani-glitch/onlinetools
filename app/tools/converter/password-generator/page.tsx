@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
-import RelatedTools from '@/components/shared/RelatedTools';
 
 const SETS = {
   lower: { label: 'Lowercase', chars: 'abcdefghijklmnopqrstuvwxyz' },
@@ -163,7 +162,6 @@ export default function PasswordGenerator() {
       </p>
 
       <AdContainer slot="1818181818" format="horizontal" />
-    <RelatedTools current="password-generator" />
     </div>
   );
 }
