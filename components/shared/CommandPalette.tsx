@@ -34,22 +34,29 @@ export default function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const results = useMemo(() => {
-    if (!query.trim()) {
-      const recentTools = recent
-        .map((id) => TOOLS.find((t) => t.id === id))
-        .filter((t): t is Tool => !!t);
-      // Fall back to the first few tools so the panel is never empty.
-      return recentTools.length ? recentTools : TOOLS.slice(0, 6);
+  // With no query the panel lists every tool, recents first. Showing a
+  // slice of the registry instead would misrepresent the catalogue: the
+  // first six entries are all developer tools, so the palette looked like
+  // that was all the site had.
+  const { results, recentCount } = useMemo(() => {
+    if (query.trim()) {
+      const ranked = TOOLS.map((tool) => ({ tool, rank: score(tool, query) }))
+        .filter(({ rank }) => rank !== Infinity)
+        .sort((a, b) => a.rank - b.rank)
+        .map(({ tool }) => tool);
+      return { results: ranked, recentCount: 0 };
     }
-    return TOOLS.map((tool) => ({ tool, rank: score(tool, query) }))
-      .filter(({ rank }) => rank !== Infinity)
-      .sort((a, b) => a.rank - b.rank)
-      .slice(0, 8)
-      .map(({ tool }) => tool);
-  }, [query, recent]);
 
-  const showingRecent = !query.trim() && recent.length > 0;
+    const recentTools = recent
+      .map((id) => TOOLS.find((t) => t.id === id))
+      .filter((t): t is Tool => !!t);
+    const rest = TOOLS.filter((t) => !recentTools.some((r) => r.id === t.id));
+
+    return {
+      results: [...recentTools, ...rest],
+      recentCount: recentTools.length,
+    };
+  }, [query, recent]);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -160,14 +167,20 @@ export default function CommandPalette() {
         </div>
 
         <div ref={listRef} className="max-h-[19rem] overflow-y-auto p-1.5">
-          {showingRecent && (
-            <p className="eyebrow px-2.5 py-2">Recent</p>
-          )}
-
           {results.length > 0 ? (
             results.map((tool, i) => (
+              <div key={tool.id}>
+                {/* Headings sit inside the loop so they land between the
+                    right rows without disturbing the flat index. */}
+                {!query.trim() && i === 0 && recentCount > 0 && (
+                  <p className="eyebrow px-2.5 py-2">Recent</p>
+                )}
+                {!query.trim() && i === recentCount && (
+                  <p className="eyebrow px-2.5 py-2">
+                    {recentCount > 0 ? 'All tools' : `All ${results.length} tools`}
+                  </p>
+                )}
               <button
-                key={tool.id}
                 data-index={i}
                 onClick={() => go(tool)}
                 onMouseMove={() => setActive(i)}
@@ -194,6 +207,7 @@ export default function CommandPalette() {
                   {categoryName(tool.category)}
                 </span>
               </button>
+              </div>
             ))
           ) : (
             <p className="px-2.5 py-8 text-center text-[13px] text-ink-subtle">
