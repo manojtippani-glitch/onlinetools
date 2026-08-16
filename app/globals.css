@@ -348,6 +348,134 @@ body {
   color: var(--ink);
 }
 
+/* Articles. Wider measure than the legal pages and it needs code blocks. */
+.post-prose {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-muted);
+}
+
+.post-prose > p:first-of-type {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.post-prose h2 {
+  font-size: 22px;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 3rem 0 1rem;
+}
+
+.post-prose h3 {
+  font-size: 17px;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 2rem 0 0.6rem;
+}
+
+.post-prose p {
+  margin: 1.1rem 0;
+}
+
+.post-prose ul,
+.post-prose ol {
+  margin: 1.2rem 0;
+  padding-left: 1.3rem;
+}
+
+.post-prose ul { list-style: disc; }
+.post-prose ol { list-style: decimal; }
+.post-prose li { margin: 0.5rem 0; }
+
+.post-prose strong {
+  color: var(--ink);
+  font-weight: 560;
+}
+
+.post-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.post-prose a:hover {
+  color: var(--accent);
+}
+
+.post-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--surface-muted);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.12em 0.35em;
+  color: var(--ink);
+}
+
+.post-prose pre {
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.post-prose pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: var(--ink);
+}
+
+.post-prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.1rem;
+  margin: 1.6rem 0;
+  color: var(--ink);
+}
+
+/* Pull-out for the one thing to remember. */
+.post-prose .keypoint {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.4rem;
+  margin: 1.8rem 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.post-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 14px;
+}
+
+.post-prose th,
+.post-prose td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+}
+
+.post-prose th {
+  background: var(--surface-muted);
+  color: var(--ink);
+  font-weight: 560;
+}
+
 /* Grid texture behind the hero — adds depth without a gradient. */
 .grid-veil {
   background-image:

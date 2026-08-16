@@ -16,6 +16,12 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/blog"
+            className="hidden sm:inline-block px-2.5 h-8 leading-8 rounded-lg text-[13px] text-ink-muted hover:text-ink hover:bg-surface-muted transition-colors"
+          >
+            Articles
+          </Link>
           <SearchTrigger />
           <ThemeToggle />
         </div>

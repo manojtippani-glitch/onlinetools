@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 import { SITE_URL } from '@/lib/site';
+import { POSTS } from '@/lib/posts';
 
 /**
  * lastModified is deliberately omitted.
@@ -33,6 +34,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Tool pages are the point of the site, so they outrank the
       // legal pages but sit just under the index.
       priority: 0.8,
+    })),
+    {
+      url: `${SITE_URL}/blog`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...POSTS.map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
     })),
     ...['/privacy', '/terms', '/contact'].map((path) => ({
       url: `${SITE_URL}${path}`,

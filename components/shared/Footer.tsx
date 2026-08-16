@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { TOOLS, CATEGORIES, toolHref } from '@/lib/tools';
 
 const LEGAL = [
+  { name: 'Articles', href: '/blog' },
   { name: 'Privacy', href: '/privacy' },
   { name: 'Terms', href: '/terms' },
   { name: 'Contact', href: '/contact' },

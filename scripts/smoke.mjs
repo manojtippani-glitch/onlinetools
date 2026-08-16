@@ -20,8 +20,17 @@ const TOOLS = [
   ['converter', ['json-to-csv','csv-to-json','unit-converter','temperature-converter','password-generator','random-generator']],
 ];
 
+const POSTS = [
+  'why-compressed-images-get-bigger',
+  'base64-is-not-encryption',
+  'json-rules-that-trip-people-up',
+  'reading-a-jwt',
+];
+
 const routes = [
   '/', '/privacy', '/terms', '/contact', '/sitemap.xml', '/robots.txt',
+  '/blog', '/blog/rss.xml', '/manifest.webmanifest',
+  ...POSTS.map((s) => `/blog/${s}`),
   ...TOOLS.map(([c]) => `/tools/${c}`),
   ...TOOLS.flatMap(([c, ids]) => ids.map((id) => `/tools/${c}/${id}`)),
 ];
@@ -37,7 +46,7 @@ for (const route of routes) {
   const problems = [];
   if (res.status !== 200) problems.push(`status ${res.status}`);
 
-  const isPage = !route.endsWith('.xml') && !route.endsWith('.txt');
+  const isPage = !/\.(xml|txt|webmanifest)$/.test(route);
   if (isPage) {
     if (!/<h1[^>]*>/.test(body)) problems.push('no <h1>');
     if (!/<title>/.test(body)) problems.push('no <title>');
