@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
+import ShareLink from '@/components/shared/ShareLink';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -199,6 +200,13 @@ export default function TimestampConverter() {
           </div>
         </>
       )}
+
+      <div className="flex items-center gap-3 pt-2">
+        <ShareLink value={raw} />
+        <span className="text-[12.5px] text-ink-muted">
+          Copies a link that reopens this tool with your input.
+        </span>
+      </div>
 
       <AdContainer slot="1919191901" format="horizontal" />
       <RelatedTools current="timestamp-converter" />

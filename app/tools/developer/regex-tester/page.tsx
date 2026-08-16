@@ -1,17 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
 
 export default function RegexTester() {
+  const searchParams = useSearchParams();
   const [pattern, setPattern] = useState('');
   const [testString, setTestString] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   const [flags, setFlags] = useState('g');
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const param = searchParams.get('input');
+    if (param) {
+      try {
+        setTestString(decodeURIComponent(param));
+      } catch {
+        // Ignore malformed encoding
+      }
+    }
+  }, [searchParams]);
 
   const handleTest = () => {
     setError('');

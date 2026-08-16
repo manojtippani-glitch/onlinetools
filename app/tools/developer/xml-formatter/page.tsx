@@ -1,11 +1,11 @@
 'use client';
 
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
+import ShareLink from '@/components/shared/ShareLink';
 
 export default function XmlFormatter() {
   const searchParams = useSearchParams();
@@ -186,6 +186,13 @@ export default function XmlFormatter() {
         >
           Clear
         </button>
+      </div>
+
+      <div className="flex items-center gap-3 pt-2">
+        <ShareLink value={input} />
+        <span className="text-[12.5px] text-ink-muted">
+          Copies a link that reopens this tool with your input.
+        </span>
       </div>
 
       <div className="py-4">

@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
+import ShareLink from '@/components/shared/ShareLink';
 
 /**
  * Flatten nested objects into dotted keys so `{user:{name}}` becomes
@@ -216,6 +217,13 @@ export default function JsonToCsv() {
             {rows} {rows === 1 ? 'row' : 'rows'}
           </span>
         )}
+      </div>
+
+      <div className="flex items-center gap-3 pt-2">
+        <ShareLink value={input} />
+        <span className="text-[12.5px] text-ink-muted">
+          Copies a link that reopens this tool with your input.
+        </span>
       </div>
 
       <AdContainer slot="1818181819" format="horizontal" />

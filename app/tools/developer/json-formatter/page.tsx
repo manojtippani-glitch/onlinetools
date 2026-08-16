@@ -1,11 +1,11 @@
 'use client';
 
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
+import ShareLink from '@/components/shared/ShareLink';
 
 const getLineAndColumn = (input: string, position: number): { line: number; column: number } => {
   let line = 1;
@@ -310,6 +310,13 @@ export default function JsonFormatter() {
       </div>
 
       {/* Ad Space */}
+      <div className="flex items-center gap-3 pt-2">
+        <ShareLink value={input} />
+        <span className="text-[12.5px] text-ink-muted">
+          Copies a link that reopens this tool with your input.
+        </span>
+      </div>
+
       <div className="py-4">
         <AdContainer slot="1111111111" format="horizontal" />
       </div>

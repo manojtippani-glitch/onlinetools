@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import AdContainer from '@/components/shared/AdContainer';
 import RelatedTools from '@/components/shared/RelatedTools';
+import ShareLink from '@/components/shared/ShareLink';
 
 /**
  * RFC 4180 parser, character by character.
@@ -254,6 +255,13 @@ export default function CsvToJson() {
           {count} {count === 1 ? 'object' : 'objects'}
         </p>
       )}
+
+      <div className="flex items-center gap-3 pt-2">
+        <ShareLink value={input} />
+        <span className="text-[12.5px] text-ink-muted">
+          Copies a link that reopens this tool with your input.
+        </span>
+      </div>
 
       <AdContainer slot="1919191906" format="horizontal" />
       <RelatedTools current="csv-to-json" />
