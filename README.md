@@ -65,7 +65,8 @@ Everything works with no environment variables set.
 | Variable | Effect if set |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Overrides the canonical origin. Needed only once a custom domain is live — otherwise Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is used automatically. |
-| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | Loads AdSense and renders the ad slots. Without it the ad containers render nothing at all. |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | Loads AdSense, renders the ad slots, and serves `/ads.txt`. Without it the ad containers render nothing and `/ads.txt` returns 404. |
+| `NEXT_PUBLIC_GOOGLE_VERIFICATION` | Adds the `google-site-verification` meta tag for Search Console. |
 
 Two constants in `app/(legal)/contact/page.tsx` — `CONTACT_EMAIL` and
 `ISSUES_URL` — are deliberately blank. Setting either turns the contact page

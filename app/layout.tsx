@@ -33,6 +33,11 @@ export const metadata: Metadata = {
   },
   description:
     'Formatters, encoders, converters and generators for everyday development work. Nothing uploads, nothing is stored, and there is no account to make.',
+  // Search Console's HTML-tag verification. Set the env var to the content
+  // value Google gives you; omitted entirely when unset.
+  verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION }
+    : undefined,
   keywords:
     'json formatter, base64 encoder, url encoder, regex tester, qr code generator, word counter, color converter, developer tools',
   openGraph: {
